@@ -4,4 +4,4 @@ theme: readthedocs
 markdown_extensions: [admonition]
 pages:
 - ['index.md', 'Index']
-- ['generated/swagger.md', 'Demo API', 'Demo API']
+- ['demo_api.md', 'Demo API']

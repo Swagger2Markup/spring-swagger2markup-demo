@@ -6,7 +6,7 @@
 
 This project is a Swagger to Markup (AsciiDoc and Markdown) converter demo using https://github.com/spring-projects/spring-boot[Spring Boot] and https://github.com/martypitt/swagger-springmvc[swagger-springmvc].
 The Markdown documentation is using https://github.com/tomchristie/mkdocs[MkDocs] and https://github.com/rtfd/readthedocs.org[ReadTheDocs].
-
+See http://spring-swagger2markup-demo.readthedocs.org/[ReadTheDocs-demo].
 
 == Demo
 
