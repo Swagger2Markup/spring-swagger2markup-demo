@@ -1,0 +1,59 @@
+buildscript {
+    repositories {
+        jcenter()
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'org.asciidoctor:asciidoctor-gradle-plugin:1.5.2'
+        classpath 'org.asciidoctor:asciidoctorj-pdf:1.5.0-alpha.6'
+        classpath 'org.springframework.boot:spring-boot-gradle-plugin:1.2.1.RELEASE'
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'maven'
+apply plugin: 'spring-boot'
+apply plugin: 'org.asciidoctor.convert'
+
+version = '1.0'
+
+tasks.withType(JavaCompile) {
+    sourceCompatibility = "1.7"
+    targetCompatibility = "1.7"
+    options.deprecation = true
+    options.encoding = 'UTF-8'
+    options.compilerArgs << "-Xlint:unchecked"
+}
+
+repositories {
+    jcenter()
+    mavenCentral()
+    mavenLocal()
+    maven { url 'https://repo.spring.io/snapshot' }
+}
+
+dependencies {
+    compile 'io.swagger2markup:swagger2markup:0.1.0'
+    compile 'org.springframework.boot:spring-boot-starter-web'
+    compile 'com.mangofactory:swagger-springmvc:0.9.5'
+    testCompile 'org.springframework.boot:spring-boot-starter-test'
+    testCompile 'junit:junit:4.11'
+    testCompile 'org.springframework.restdocs:spring-restdocs-core:0.1.0.BUILD-SNAPSHOT'
+    testCompile 'com.jayway.restassured:spring-mock-mvc:2.4.0'
+}
+
+asciidoctor {
+    attributes = [
+            doctype: 'book',
+            toc: 'left',
+            toclevels: '2'
+    ]
+}
+
+tasks.asciidoctor {
+    dependsOn 'check'
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.2.1'
+}
