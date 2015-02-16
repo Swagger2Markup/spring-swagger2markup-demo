@@ -25,8 +25,8 @@ public class Swagger2MarkupTest {
 
     @Test
     public void convertSwaggerToAsciiDoc() throws IOException {
-        Swagger2MarkupConverter.from("http://localhost:8080/api-docs").toAsciiDoc("src/docs/asciidoc/example.adoc");
-        Swagger2MarkupConverter.from("http://localhost:8080/api-docs").toMarkdown("src/docs/markdown/example.md");
+        Swagger2MarkupConverter.from("http://localhost:8080/api-docs").toAsciiDoc("src/docs/asciidoc/swagger.adoc");
+        Swagger2MarkupConverter.from("http://localhost:8080/api-docs").toMarkdown("docs/generated/swagger.md");
     }
 
 }
