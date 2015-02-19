@@ -26,7 +26,7 @@ public class MailStorageQuotaController{
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    @RequestMapping(value = "/quotas/{quotaId}", method = RequestMethod.POST)
+    @RequestMapping(value = "/{quotaId}", method = RequestMethod.POST)
     @ApiOperation(value = "Update a quota.", notes =  "Update a quota allows bla bla bla bla")
     public void updateMailStorageQuota(@ApiParam(value = "quotaId", required = true)
                                            @PathVariable("quotaId") String quotaId,
@@ -34,14 +34,14 @@ public class MailStorageQuotaController{
                                        @RequestBody MailStorageQuota mailStorageQuota) {
     }
 
-    @RequestMapping(value = "/quotas/{quotaId}", method = RequestMethod.GET)
+    @RequestMapping(value = "/{quotaId}", method = RequestMethod.GET)
     @ApiOperation(value = "Get a quotas.", notes =  "Get a quota allows bla bla bla bla")
     public MailStorageQuotaResponse getMailStorageQuota(@PathVariable("quotaId") String quotaId) {
         return new MailStorageQuotaResponse(new MailStorageQuota(MailStorageQuotaValue.NINETYDAYS, QuotaValueType.CUSTOM));
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    @RequestMapping(value = "/quotas/{quotaId}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/{quotaId}", method = RequestMethod.DELETE)
     @ApiOperation(value = "Delete a quota.", notes =  "Delete a quotas allows bla bla bla bla")
     public void deleteMailStorageQuota(@PathVariable("quotaId") String quotaId) {
 

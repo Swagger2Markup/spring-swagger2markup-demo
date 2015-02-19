@@ -1,6 +1,8 @@
 site_name: Swagger2Markup DEMO
 repo_url: https://github.com/RobWin/spring-swagger2markup-demo
 markdown_extensions: [admonition, tables]
+theme: readthedocs
 pages:
 - ['index.md', 'Index']
-- ['demo_api.md', 'Demo API']
+- ['generated/paths.md', 'API', 'API']
+- ['generated/definitions.md', 'Definitions', 'Definitions']

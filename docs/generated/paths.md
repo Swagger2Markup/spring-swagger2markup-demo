@@ -36,7 +36,7 @@ Create a quota allows bla bla bla bla
 
 ## Get a quotas.
 ```
-GET /quotas/quotas/{quotaId}
+GET /quotas/{quotaId}
 ```
 
 ### Description
@@ -66,7 +66,7 @@ Get a quota allows bla bla bla bla
 
 ## Delete a quota.
 ```
-DELETE /quotas/quotas/{quotaId}
+DELETE /quotas/{quotaId}
 ```
 
 ### Description
@@ -96,7 +96,7 @@ Delete a quotas allows bla bla bla bla
 
 ## Update a quota.
 ```
-POST /quotas/quotas/{quotaId}
+POST /quotas/{quotaId}
 ```
 
 ### Description
@@ -126,18 +126,4 @@ Update a quota allows bla bla bla bla
 
 ### Produces
 * */*
-
-## Definitions
-### MailStorageQuotaResponse
-|Name|Type|Required|
-|----|----|----|
-|mailStorageQuota|ref|false|
-
-
-### MailStorageQuota
-|Name|Type|Required|
-|----|----|----|
-|mailStorageQuotaValue|string|false|
-|quotaValueType|string|false|
-
 

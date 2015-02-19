@@ -27,7 +27,7 @@ public class Swagger2MarkupTest {
         Swagger2MarkupConverter.from("http://localhost:8080/api-docs").
                 withMarkupLanguage(MarkupLanguage.MARKDOWN).
                 withExamples("docs/generated").withSchemas("docs/generated/schemas").build()
-                .intoFolder("src/docs/markdown");
+                .intoFolder("docs/generated");
 
         Swagger2MarkupConverter.from("http://localhost:8080/api-docs").
                 withExamples("docs/generated").withSchemas("docs/generated/schemas").build()
