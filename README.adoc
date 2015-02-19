@@ -22,14 +22,18 @@ public class Swagger2MarkupTest {
     public void convertSwaggerToMarkup() {
         //Remote
         Swagger2MarkupConverter.from("http://localhost:8080/api-docs").
-            toAsciiDoc("src/docs/asciidoc/example.adoc");
+                withMarkupLanguage(MarkupLanguage.MARKDOWN).
+                withExamples("docs/generated").withSchemas("docs/schemas").build()
+                .intoFolder("src/docs/markdown");
 
         Swagger2MarkupConverter.from("http://localhost:8080/api-docs").
-            toMarkdown("src/docs/markdown/example.md");
+                withExamples("docs").withSchemas("docs/schemas").build()
+                .intoFolder("src/docs/asciidoc");
 
         //Local
         File file = new File(Swagger2MarkupTest.class.getResource("/json/swagger.json").getFile());
-        Swagger2MarkupConverter.from(file.getAbsolutePath()).toAsciiDoc("src/docs/asciidoc/swagger.adoc")
+        Swagger2MarkupConverter.from(file.getAbsolutePath()).build()
+                        .intoFolder("src/docs/asciidoc");
     }
 
 }

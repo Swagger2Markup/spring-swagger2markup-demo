@@ -7,6 +7,7 @@ buildscript {
         classpath 'org.asciidoctor:asciidoctor-gradle-plugin:1.5.2'
         classpath 'org.asciidoctor:asciidoctorj-pdf:1.5.0-alpha.6'
         classpath 'org.springframework.boot:spring-boot-gradle-plugin:1.2.1.RELEASE'
+        classpath "com.github.samueltbrown:gradle-cucumber-plugin:0.8"
     }
 }
 
@@ -14,8 +15,11 @@ apply plugin: 'java'
 apply plugin: 'maven'
 apply plugin: 'spring-boot'
 apply plugin: 'org.asciidoctor.convert'
+apply plugin: "com.github.samueltbrown.cucumber"
+apply from: 'gradle/integTest.gradle'
 
 version = '1.0'
+group = 'io.github.robwin'
 
 tasks.withType(JavaCompile) {
     sourceCompatibility = "1.7"
@@ -33,25 +37,50 @@ repositories {
 }
 
 dependencies {
-    compile 'io.swagger2markup:swagger2markup:0.1.0'
+    //compile 'commons-collections:commons-collections'
+    compile 'io.github.robwin:swagger2markup:0.2.0'
     compile 'org.springframework.boot:spring-boot-starter-web'
     compile 'com.mangofactory:swagger-springmvc:0.9.5'
     testCompile 'org.springframework.boot:spring-boot-starter-test'
+    testCompile  'info.cukes:cucumber-spring:1.2.2'
+    testCompile  'info.cukes:cucumber-junit:1.2.2'
     testCompile 'junit:junit:4.11'
     testCompile 'org.springframework.restdocs:spring-restdocs-core:0.1.0.BUILD-SNAPSHOT'
     testCompile 'com.jayway.restassured:spring-mock-mvc:2.4.0'
+    testCompile 'com.fasterxml.jackson.module:jackson-module-jsonSchema:2.4.0'
+}
+ext {
+    generatedDocumentation = file('docs/generated')
 }
 
 asciidoctor {
+    attributes 'generated': generatedDocumentation
+    inputs.dir generatedDocumentation
+    dependsOn test
+    sources {
+        include 'index.adoc'
+    }
+    backends = ['html5', 'pdf']
     attributes = [
             doctype: 'book',
             toc: 'left',
-            toclevels: '2'
+            toclevels: '2',
+            numbered: ''
     ]
 }
 
-tasks.asciidoctor {
-    dependsOn 'check'
+test {
+    systemProperty 'org.springframework.restdocs.outputDir', generatedDocumentation
+    systemProperty 'io.restdocumented.outputDir', generatedDocumentation
+    outputs.dir generatedDocumentation
+}
+
+cucumber {
+    formats = ['pretty', 'html:build/cucumber/html', 'json:build/cucumber/cucumber.json','junit:build/cucumber/cucumber.xml']
+    featureDirs = ['src/test/resources/features']
+    jvmOptions {
+        maxHeapSize = '512m'
+    }
 }
 
 task wrapper(type: Wrapper) {

@@ -1,4 +1,4 @@
-package io.swagger2markup.demo;
+package io.github.robwin.swagger2markup.demo;
 
 import com.mangofactory.swagger.configuration.SpringSwaggerConfig;
 import com.mangofactory.swagger.models.dto.ApiInfo;
@@ -11,11 +11,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Controller;
 
 /**
- * Project:   spring-swagger2asciidoc
- * Copyright: Deutsche Telekom AG
- *
- * @author Robert Winkler <robert.winkler@telekom.de>
- * @since 2.0.0
+ * Project:   spring-swagger2markup-demo
+ * @author Robert Winkler
  */
 @SpringBootApplication
 @EnableSwagger

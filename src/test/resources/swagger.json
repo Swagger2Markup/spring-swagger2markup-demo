@@ -1,0 +1,228 @@
+{"apiVersion": "1.0", "swaggerVersion": "1.2", "basePath": "/", "resourcePath": "/quotas", "produces": ["*/*"], "consumes": ["application/json"], "apis": [
+    {
+        "path": "/quotas",
+        "description": "createMailStorageQuota",
+        "operations": [
+            {
+                "method": "PUT",
+                "summary": "Create a quota.",
+                "notes": "Create a quota allows bla bla bla bla",
+                "nickname": "createMailStorageQuota",
+                "produces": ["*/*"],
+                "consumes": ["application/json"],
+                "parameters": [
+                    {
+                        "allowMultiple": false,
+                        "defaultValue": "",
+                        "description": "MailStorageQuota",
+                        "name": "body",
+                        "paramType": "body",
+                        "type": "MailStorageQuota",
+                        "required": true
+                    }
+                ],
+                "responseMessages": [
+                    {
+                        "code": 201,
+                        "message": "Created"
+                    },
+                    {
+                        "code": 204,
+                        "message": null
+                    },
+                    {
+                        "code": 401,
+                        "message": "Unauthorized"
+                    },
+                    {
+                        "code": 403,
+                        "message": "Forbidden"
+                    },
+                    {
+                        "code": 404,
+                        "message": "Not Found"
+                    }
+                ],
+                "deprecated": "false",
+                "type": "void"
+            }
+        ]
+    },
+    {
+        "path": "/quotas/quotas/{quotaId}",
+        "description": "updateMailStorageQuota",
+        "operations": [
+            {
+                "method": "POST",
+                "summary": "Update a quota.",
+                "notes": "Update a quota allows bla bla bla bla",
+                "nickname": "updateMailStorageQuota",
+                "produces": ["*/*"],
+                "consumes": ["application/json"],
+                "parameters": [
+                    {
+                        "allowMultiple": false,
+                        "defaultValue": "",
+                        "description": "quotaId",
+                        "name": "quotaId",
+                        "paramType": "path",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
+                        "allowMultiple": false,
+                        "defaultValue": "",
+                        "description": "MailStorageQuota",
+                        "name": "body",
+                        "paramType": "body",
+                        "type": "MailStorageQuota",
+                        "required": true
+                    }
+                ],
+                "responseMessages": [
+                    {
+                        "code": 201,
+                        "message": "Created"
+                    },
+                    {
+                        "code": 204,
+                        "message": null
+                    },
+                    {
+                        "code": 401,
+                        "message": "Unauthorized"
+                    },
+                    {
+                        "code": 403,
+                        "message": "Forbidden"
+                    },
+                    {
+                        "code": 404,
+                        "message": "Not Found"
+                    }
+                ],
+                "deprecated": "false",
+                "type": "void"
+            }
+        ]
+    },
+    {
+        "path": "/quotas/quotas/{quotaId}",
+        "description": "getMailStorageQuota",
+        "operations": [
+            {
+                "method": "GET",
+                "summary": "Get a quotas.",
+                "notes": "Get a quota allows bla bla bla bla",
+                "nickname": "getMailStorageQuota",
+                "produces": ["*/*"],
+                "consumes": ["application/json"],
+                "parameters": [
+                    {
+                        "allowMultiple": false,
+                        "defaultValue": "",
+                        "description": "quotaId",
+                        "name": "quotaId",
+                        "paramType": "path",
+                        "type": "string",
+                        "required": true
+                    }
+                ],
+                "responseMessages": [
+                    {
+                        "code": 200,
+                        "message": "OK",
+                        "responseModel": "MailStorageQuotaResponse"
+                    },
+                    {
+                        "code": 401,
+                        "message": "Unauthorized"
+                    },
+                    {
+                        "code": 403,
+                        "message": "Forbidden"
+                    },
+                    {
+                        "code": 404,
+                        "message": "Not Found"
+                    }
+                ],
+                "deprecated": "false",
+                "type": "MailStorageQuotaResponse"
+            }
+        ]
+    },
+    {
+        "path": "/quotas/quotas/{quotaId}",
+        "description": "deleteMailStorageQuota",
+        "operations": [
+            {
+                "method": "DELETE",
+                "summary": "Delete a quota.",
+                "notes": "Delete a quotas allows bla bla bla bla",
+                "nickname": "deleteMailStorageQuota",
+                "produces": ["*/*"],
+                "consumes": ["application/json"],
+                "parameters": [
+                    {
+                        "allowMultiple": false,
+                        "defaultValue": "",
+                        "description": "quotaId",
+                        "name": "quotaId",
+                        "paramType": "path",
+                        "type": "string",
+                        "required": true
+                    }
+                ],
+                "responseMessages": [
+                    {
+                        "code": 204,
+                        "message": "No Content"
+                    },
+                    {
+                        "code": 401,
+                        "message": "Unauthorized"
+                    },
+                    {
+                        "code": 403,
+                        "message": "Forbidden"
+                    }
+                ],
+                "deprecated": "false",
+                "type": "void"
+            }
+        ]
+    }
+], "models": {
+    "MailStorageQuota": {
+        "description": "",
+        "id": "MailStorageQuota",
+        "properties": {
+            "mailStorageQuotaValue": {
+                "enum": ["3", "14", "30", "90", "-1"],
+                "required": false,
+                "type": "string"
+            },
+            "quotaValueType": {
+                "enum": ["DEFAULT", "CUSTOM"],
+                "required": false,
+                "type": "string"
+            }
+        }
+    },
+    "Void": {
+        "description": "",
+        "id": "Void",
+        "properties": {}
+    },
+    "MailStorageQuotaResponse": {
+        "description": "",
+        "id": "MailStorageQuotaResponse",
+        "properties": {
+            "mailStorageQuota": {
+                "required": false,
+                "type": "MailStorageQuota"
+            }
+        }
+    }
+}}

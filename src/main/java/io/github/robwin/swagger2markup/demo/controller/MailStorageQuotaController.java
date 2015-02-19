@@ -1,12 +1,12 @@
-package io.swagger2markup.demo.controller;
+package io.github.robwin.swagger2markup.demo.controller;
 
 import com.wordnik.swagger.annotations.Api;
 import com.wordnik.swagger.annotations.ApiOperation;
 import com.wordnik.swagger.annotations.ApiParam;
-import io.swagger2markup.demo.model.MailStorageQuota;
-import io.swagger2markup.demo.model.MailStorageQuotaResponse;
-import io.swagger2markup.demo.model.MailStorageQuotaValue;
-import io.swagger2markup.demo.model.QuotaValueType;
+import io.github.robwin.swagger2markup.demo.model.MailStorageQuota;
+import io.github.robwin.swagger2markup.demo.model.MailStorageQuotaResponse;
+import io.github.robwin.swagger2markup.demo.model.MailStorageQuotaValue;
+import io.github.robwin.swagger2markup.demo.model.QuotaValueType;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
