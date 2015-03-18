@@ -38,7 +38,7 @@ repositories {
 
 dependencies {
     //compile 'commons-collections:commons-collections'
-    compile 'io.github.robwin:swagger2markup:0.2.0'
+    compile 'io.github.robwin:swagger2markup:0.2.1'
     compile 'org.springframework.boot:spring-boot-starter-web'
     compile 'com.mangofactory:swagger-springmvc:0.9.5'
     testCompile 'org.springframework.boot:spring-boot-starter-test'
