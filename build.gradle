@@ -37,7 +37,7 @@ repositories {
 }
 
 dependencies {
-    //compile 'commons-collections:commons-collections'
+    compile 'io.github.robwin:swagger2markup:0.2.1'
     compile 'org.springframework.boot:spring-boot-starter-web'
     compile 'org.springframework.boot:spring-boot-starter-actuator'
     compile 'io.springfox:springfox-swagger2:2.0.0-SNAPSHOT'
