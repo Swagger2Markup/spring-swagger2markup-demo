@@ -1,0 +1,12 @@
+:doctype: book
+:toc: left
+:toclevels: 2
+:numbered:
+:sectlinks:
+:sectanchors:
+:hardbreaks:
+
+:generated: generated
+
+include::{generated}/swagger_adoc/paths.adoc[]
+include::{generated}/swagger_adoc/definitions.adoc[]

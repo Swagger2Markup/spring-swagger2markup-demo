@@ -1,4 +1,4 @@
-package io.github.robwin.swagger2markup.demo;
+package io.github.robwin.swagger2markup.petstore;
 
 import cucumber.api.CucumberOptions;
 import cucumber.api.junit.Cucumber;

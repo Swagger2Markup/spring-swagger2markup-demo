@@ -1,0 +1,15 @@
+spring:
+    profiles.active: dev
+    main.show_banner: false
+
+server:
+    port: 9080
+
+management:
+    contextPath: /management
+    add-application-context-header: false
+
+info:
+    name: swagger2markup-demo
+    description:  Swagger2Markup demo
+    version: 1.0.0

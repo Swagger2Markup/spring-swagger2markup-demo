@@ -1,4 +1,4 @@
-Feature: Create a mail storage quota
+Feature: Add a new pet to the store
 
   Scenario Outline: Create a mail storage quota with <quota> days
     When I create a mail storage quota with <quota> days

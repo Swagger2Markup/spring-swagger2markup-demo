@@ -1,4 +1,4 @@
-package io.github.robwin.swagger2markup.demo;
+package io.github.robwin.swagger2markup.petstore;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.module.jsonSchema.JsonSchema;
