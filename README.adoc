@@ -4,31 +4,38 @@
 :hardbreaks:
 == Overview
 
-This project is a https://github.com/RobWin/swagger2markup[Swagger2Markup] (AsciiDoc and Markdown) converter demo using https://github.com/spring-projects/spring-boot[Spring Boot] and https://github.com/martypitt/swagger-springmvc[swagger-springmvc].
-I'm using https://github.com/tomchristie/mkdocs[MkDocs] and https://github.com/rtfd/readthedocs.org[ReadTheDocs] to generate the documentation based on Markdown.
-See http://spring-swagger2markup-demo.readthedocs.org/[ReadTheDocs-demo].
+This project is a https://github.com/RobWin/swagger2markup[Swagger2Markup] (AsciiDoc and Markdown) converter demo using https://github.com/spring-projects/spring-boot[Spring Boot], https://github.com/springfox/springfox[springfox] and https://github.com/spring-projects/spring-restdocs[spring-restdocs].
+The demo shows how you can generate static docs (HTML5 and PDF) with https://github.com/RobWin/swagger2markup[Swagger2Markup] and serve them in a Spring Boot app under http://localhost:9080/docs/index.html and http://localhost:9080/docs/index.pdf.
 
 == Demo
 
 [source,java]
 ----
-@RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = SpringBootSwaggerConfig.class)
-@IntegrationTest
 @WebAppConfiguration
-public class Swagger2MarkupTest {
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(classes = Application.class, loader = SpringApplicationContextLoader.class)
+public class CreateAsciiDoc {
+
+    private static final Logger LOG = LoggerFactory.getLogger(CreateAsciiDoc.class);
+
+    @Autowired
+    private WebApplicationContext context;
+
+    private MockMvc mockMvc;
+
+    @Before
+    public void setUp() {
+        this.mockMvc = MockMvcBuilders.webAppContextSetup(this.context)
+                .apply(new RestDocumentationConfigurer()).build();
+    }
 
     @Test
-    public void convertSwaggerToMarkup() {
-        //Remote
-        Swagger2MarkupConverter.from("http://localhost:8080/api-docs").
-                withMarkupLanguage(MarkupLanguage.MARKDOWN).
-                withExamples("docs/generated").withSchemas("docs/schemas").build()
-                .intoFolder("src/docs/markdown");
-
-        Swagger2MarkupConverter.from("http://localhost:8080/api-docs").
-                withExamples("docs").withSchemas("docs/schemas").build()
-                .intoFolder("src/docs/asciidoc");
+    public void createAsciiDoc() throws Exception {
+        this.mockMvc.perform(get("/v2/api-docs")
+                .accept(MediaType.APPLICATION_JSON))
+                .andDo(document("get_swagger_doc"))
+                .andDo(Swagger2MarkupDocumentation.document("swagger_adoc"))
+                .andExpect(status().isOk());
     }
 
 }
@@ -37,32 +44,29 @@ public class Swagger2MarkupTest {
 [source,java]
 ----
 @SpringBootApplication
-@EnableSwagger
-public class SpringBootSwaggerConfig {
+@EnableSwagger2
+public class Application {
 
     public static void main(String[] args) {
-        SpringApplication.run(SpringBootTestConfig.class, args);
+        SpringApplication.run(Application.class, args);
     }
-
-    @Autowired
-    private SpringSwaggerConfig springSwaggerConfig;
 
     @Bean
-    public SwaggerSpringMvcPlugin customImplementation(){
-        return new SwaggerSpringMvcPlugin(this.springSwaggerConfig)
-                .apiInfo(apiInfo()).excludeAnnotations(Controller.class);
+    public Docket spicaRestApi() {
+        return new Docket(DocumentationType.SWAGGER_2)
+                .apiInfo(spicaApiInfo())
+                .select()
+                .paths(ant("/api/**"))
+                .build();
     }
 
-    private ApiInfo apiInfo() {
-        ApiInfo apiInfo = new ApiInfo(
-                "My Apps API Title",
-                "My Apps API Description",
-                "My Apps API terms of service",
-                "My Apps API Contact Email",
-                "My Apps API Licence Type",
-                "My Apps API License URL"
-        );
-        return apiInfo;
+    private ApiInfo spicaApiInfo() {
+        return new ApiInfoBuilder()
+                .title("Petstore API Title")
+                .description("Petstore API Description")
+                .contact("Petstore API Contact Email")
+                .version("1.0.0")
+                .build();
     }
 }
 ----
