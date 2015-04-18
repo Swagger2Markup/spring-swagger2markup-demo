@@ -70,6 +70,3 @@ public class Application {
     }
 }
 ----
-
-=== Generated HTML via Mkdocs
-image::images/mkdocs_html.PNG[mkdocs_html]
