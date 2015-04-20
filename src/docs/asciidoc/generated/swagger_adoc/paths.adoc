@@ -1,12 +1,3 @@
-= Petstore API Title
-
-Petstore API Description
-Version: 1.0.0
-Contact: Petstore API Contact Email
-
-Host: localhost:8080
-BasePath: /
-
 == Paths
 === Update an existing pet
 ----
@@ -21,20 +12,20 @@ updatePet
 [options="header"]
 |===
 |Type|Name|Description|Required|Schema
-|BodyParameter|body|Pet object that needs to be added to the store|true|<<Pet>>
+|BodyParameter|pet|Pet object that needs to be added to the store|true|<<Pet>>
 |===
 
 ==== Responses
 [options="header"]
 |===
 |HTTP Code|Description|Schema
+|405|Validation exception|No Content
+|404|Not Found|No Content
 |200|OK|string
 |201|Created|No Content
-|400|Invalid ID supplied|No Content
 |401|Unauthorized|No Content
+|400|Invalid ID supplied|No Content
 |403|Forbidden|No Content
-|404|Not Found|No Content
-|405|Validation exception|No Content
 |===
 
 ==== Consumes
@@ -63,19 +54,19 @@ addPet
 [options="header"]
 |===
 |Type|Name|Description|Required|Schema
-|BodyParameter|body|Pet object that needs to be added to the store|true|<<Pet>>
+|BodyParameter|pet|Pet object that needs to be added to the store|true|<<Pet>>
 |===
 
 ==== Responses
 [options="header"]
 |===
 |HTTP Code|Description|Schema
+|405|Invalid input|No Content
+|404|Not Found|No Content
 |200|OK|string
 |201|Created|No Content
 |401|Unauthorized|No Content
 |403|Forbidden|No Content
-|404|Not Found|No Content
-|405|Invalid input|No Content
 |===
 
 ==== Consumes
@@ -111,11 +102,11 @@ Multiple status values can be provided with comma seperated strings
 [options="header"]
 |===
 |HTTP Code|Description|Schema
-|200|OK|<<Pet>> array
-|400|Invalid status value|No Content
-|401|Unauthorized|No Content
-|403|Forbidden|No Content
 |404|Not Found|No Content
+|200|OK|<<Pet>> array
+|401|Unauthorized|No Content
+|400|Invalid status value|No Content
+|403|Forbidden|No Content
 |===
 
 ==== Consumes
@@ -151,11 +142,11 @@ Muliple tags can be provided with comma seperated strings. Use tag1, tag2, tag3 
 [options="header"]
 |===
 |HTTP Code|Description|Schema
-|200|OK|<<Pet>> array
-|400|Invalid tag value|No Content
-|401|Unauthorized|No Content
-|403|Forbidden|No Content
 |404|Not Found|No Content
+|200|OK|<<Pet>> array
+|401|Unauthorized|No Content
+|400|Invalid tag value|No Content
+|403|Forbidden|No Content
 |===
 
 ==== Consumes
@@ -191,11 +182,11 @@ Returns a pet when ID < 10. ID > 10 or nonintegers will simulate API error condi
 [options="header"]
 |===
 |HTTP Code|Description|Schema
-|200|OK|<<Pet>>
-|400|Invalid ID supplied|No Content
-|401|Unauthorized|No Content
-|403|Forbidden|No Content
 |404|Not Found|No Content
+|200|OK|<<Pet>>
+|401|Unauthorized|No Content
+|400|Invalid ID supplied|No Content
+|403|Forbidden|No Content
 |===
 
 ==== Consumes
@@ -224,19 +215,19 @@ placeOrder
 [options="header"]
 |===
 |Type|Name|Description|Required|Schema
-|BodyParameter|body|order placed for purchasing the pet|true|<<Order>>
+|BodyParameter|order|order placed for purchasing the pet|true|<<Order>>
 |===
 
 ==== Responses
 [options="header"]
 |===
 |HTTP Code|Description|Schema
+|404|Not Found|No Content
 |200|OK|string
 |201|Created|No Content
-|400|Invalid Order|No Content
 |401|Unauthorized|No Content
+|400|Invalid Order|No Content
 |403|Forbidden|No Content
-|404|Not Found|No Content
 |===
 
 ==== Consumes
@@ -271,11 +262,11 @@ For valid response try integer IDs with value <= 5 or > 10. Other values will ge
 [options="header"]
 |===
 |HTTP Code|Description|Schema
-|200|OK|<<Order>>
-|400|Invalid ID supplied|No Content
-|401|Unauthorized|No Content
-|403|Forbidden|No Content
 |404|Not Found|No Content
+|200|OK|<<Order>>
+|401|Unauthorized|No Content
+|400|Invalid ID supplied|No Content
+|403|Forbidden|No Content
 |===
 
 ==== Consumes
@@ -310,12 +301,12 @@ For valid response try integer IDs with value < 1000. Anything above 1000 or non
 [options="header"]
 |===
 |HTTP Code|Description|Schema
-|200|OK|string
-|400|Invalid ID supplied|No Content
-|401|Unauthorized|No Content
 |204|No Content|No Content
-|403|Forbidden|No Content
 |404|Order not found|No Content
+|200|OK|string
+|401|Unauthorized|No Content
+|400|Invalid ID supplied|No Content
+|403|Forbidden|No Content
 |===
 
 ==== Consumes
@@ -343,18 +334,18 @@ This can only be done by the logged in user.
 [options="header"]
 |===
 |Type|Name|Description|Required|Schema
-|BodyParameter|body|Created user object|true|<<User>>
+|BodyParameter|user|Created user object|true|<<User>>
 |===
 
 ==== Responses
 [options="header"]
 |===
 |HTTP Code|Description|Schema
+|404|Not Found|No Content
 |200|OK|<<User>>
 |201|Created|No Content
 |401|Unauthorized|No Content
 |403|Forbidden|No Content
-|404|Not Found|No Content
 |===
 
 ==== Consumes
@@ -382,18 +373,18 @@ createUsersWithArrayInput
 [options="header"]
 |===
 |Type|Name|Description|Required|Schema
-|BodyParameter|body|List of user object|true|<<User>> array
+|BodyParameter|users|List of user object|true|<<User>> array
 |===
 
 ==== Responses
 [options="header"]
 |===
 |HTTP Code|Description|Schema
+|404|Not Found|No Content
 |200|OK|<<User>>
 |201|Created|No Content
 |401|Unauthorized|No Content
 |403|Forbidden|No Content
-|404|Not Found|No Content
 |===
 
 ==== Consumes
@@ -421,18 +412,18 @@ createUsersWithListInput
 [options="header"]
 |===
 |Type|Name|Description|Required|Schema
-|BodyParameter|body|List of user object|true|<<User>> array
+|BodyParameter|users|List of user object|true|<<User>> array
 |===
 
 ==== Responses
 [options="header"]
 |===
 |HTTP Code|Description|Schema
+|404|Not Found|No Content
 |200|OK|string
 |201|Created|No Content
 |401|Unauthorized|No Content
 |403|Forbidden|No Content
-|404|Not Found|No Content
 |===
 
 ==== Consumes
@@ -468,11 +459,11 @@ loginUser
 [options="header"]
 |===
 |HTTP Code|Description|Schema
-|200|OK|string
-|400|Invalid username/password supplied|No Content
-|401|Unauthorized|No Content
-|403|Forbidden|No Content
 |404|Not Found|No Content
+|200|OK|string
+|401|Unauthorized|No Content
+|400|Invalid username/password supplied|No Content
+|403|Forbidden|No Content
 |===
 
 ==== Consumes
@@ -500,10 +491,10 @@ logoutUser
 [options="header"]
 |===
 |HTTP Code|Description|Schema
+|404|Not Found|No Content
 |200|OK|string
 |401|Unauthorized|No Content
 |403|Forbidden|No Content
-|404|Not Found|No Content
 |===
 
 ==== Consumes
@@ -538,11 +529,11 @@ getUserByName
 [options="header"]
 |===
 |HTTP Code|Description|Schema
-|200|OK|<<User>>
-|400|Invalid username supplied|No Content
-|401|Unauthorized|No Content
-|403|Forbidden|No Content
 |404|Not Found|No Content
+|200|OK|<<User>>
+|401|Unauthorized|No Content
+|400|Invalid username supplied|No Content
+|403|Forbidden|No Content
 |===
 
 ==== Consumes
@@ -571,19 +562,19 @@ This can only be done by the logged in user.
 |===
 |Type|Name|Description|Required|Schema
 |PathParameter|username|name that need to be deleted|true|string
-|BodyParameter|body|Updated user object|true|<<User>>
+|BodyParameter|user|Updated user object|true|<<User>>
 |===
 
 ==== Responses
 [options="header"]
 |===
 |HTTP Code|Description|Schema
+|404|Not Found|No Content
 |200|OK|string
 |201|Created|No Content
-|400|Invalid user supplied|No Content
 |401|Unauthorized|No Content
+|400|Invalid user supplied|No Content
 |403|Forbidden|No Content
-|404|Not Found|No Content
 |===
 
 ==== Consumes
@@ -618,12 +609,12 @@ This can only be done by the logged in user.
 [options="header"]
 |===
 |HTTP Code|Description|Schema
-|200|OK|string
-|400|Invalid username supplied|No Content
-|401|Unauthorized|No Content
 |204|No Content|No Content
-|403|Forbidden|No Content
 |404|User not found|No Content
+|200|OK|string
+|401|Unauthorized|No Content
+|400|Invalid username supplied|No Content
+|403|Forbidden|No Content
 |===
 
 ==== Consumes

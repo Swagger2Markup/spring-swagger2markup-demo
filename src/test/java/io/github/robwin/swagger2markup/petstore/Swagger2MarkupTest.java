@@ -24,9 +24,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WebAppConfiguration
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = Application.class, loader = SpringApplicationContextLoader.class)
-public class CreateAsciiDoc {
+public class Swagger2MarkupTest {
 
-    private static final Logger LOG = LoggerFactory.getLogger(CreateAsciiDoc.class);
+    private static final Logger LOG = LoggerFactory.getLogger(Swagger2MarkupTest.class);
 
     @Autowired
     private WebApplicationContext context;

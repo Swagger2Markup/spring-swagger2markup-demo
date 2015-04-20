@@ -37,7 +37,7 @@ repositories {
 }
 
 dependencies {
-    compile 'io.github.robwin:swagger2markup:0.2.1'
+    compile 'io.github.robwin:swagger2markup:0.4.0'
     compile 'org.springframework.boot:spring-boot-starter-web'
     compile 'org.springframework.boot:spring-boot-starter-actuator'
     compile 'io.springfox:springfox-swagger2:2.0.0-SNAPSHOT'
@@ -60,14 +60,6 @@ asciidoctor {
         include 'index.adoc'
     }
     backends = ['html5', 'pdf']
-    attributes = [
-            doctype: 'book',
-            toc: 'left',
-            toclevels: '2',
-            numbered: '',
-            hardbreaks: '',
-            generated: 'generated'
-    ]
 }
 
 

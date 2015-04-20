@@ -1,6 +1,7 @@
 package io.github.robwin.swagger2markup.documentation;
 
-import org.apache.commons.lang.Validate;
+
+import org.apache.commons.lang3.Validate;
 
 import java.io.IOException;
 import java.io.InputStream;
