@@ -83,7 +83,7 @@ jar {
 
 test {
     systemProperty 'org.springframework.restdocs.outputDir', generatedDocumentation
-    systemProperty 'io.springfox.statidocs.outputDir', generatedDocumentation
+    systemProperty 'io.springfox.staticdocs.outputDir', generatedDocumentation
     outputs.dir generatedDocumentation
 }
 

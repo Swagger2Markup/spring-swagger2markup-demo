@@ -8,7 +8,7 @@ import java.util.Properties;
 
 public class Swagger2MarkupDocumentation {
 
-    private static final String OUTPUT_DIR = "io.springfox.statidocs.outputDir";
+    private static final String OUTPUT_DIR = "io.springfox.staticdocs.outputDir";
 
     private Swagger2MarkupDocumentation() {}
 
