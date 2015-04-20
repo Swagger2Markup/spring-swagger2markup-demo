@@ -8,6 +8,6 @@ image:https://travis-ci.org/RobWin/spring-swagger2markup-demo.svg["Build Status"
 == Overview
 
 This project is a https://github.com/RobWin/swagger2markup[Swagger2Markup] (AsciiDoc and GitHub Flavored Markdown) converter demo using https://github.com/spring-projects/spring-boot[Spring Boot], https://github.com/springfox/springfox[springfox] and https://github.com/spring-projects/spring-restdocs[spring-restdocs].
-The demo shows how you can generate static docs (HTML5 and PDF) with https://github.com/RobWin/swagger2markup[Swagger2Markup] and serve them in a Spring Boot app under http://localhost:9080/docs/index.html and http://localhost:9080/docs/index.pdf.
+The demo shows how to generate static docs (HTML5 and PDF) with https://github.com/RobWin/swagger2markup[Swagger2Markup] and serve them in a Spring Boot app under http://localhost:9080/docs/index.html and http://localhost:9080/docs/index.pdf.
 
 See  https://github.com/RobWin/swagger2markup[Swagger2Markup] for more details and usage guide.
