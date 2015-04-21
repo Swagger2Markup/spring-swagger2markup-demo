@@ -19,13 +19,13 @@ updatePet
 [options="header"]
 |===
 |HTTP Code|Description|Schema
-|405|Validation exception|No Content
-|404|Not Found|No Content
 |200|OK|string
 |201|Created|No Content
-|401|Unauthorized|No Content
 |400|Invalid ID supplied|No Content
+|401|Unauthorized|No Content
 |403|Forbidden|No Content
+|404|Not Found|No Content
+|405|Validation exception|No Content
 |===
 
 ==== Consumes
@@ -61,12 +61,12 @@ addPet
 [options="header"]
 |===
 |HTTP Code|Description|Schema
-|405|Invalid input|No Content
-|404|Not Found|No Content
 |200|OK|string
 |201|Created|No Content
 |401|Unauthorized|No Content
 |403|Forbidden|No Content
+|404|Not Found|No Content
+|405|Invalid input|No Content
 |===
 
 ==== Consumes
@@ -81,6 +81,28 @@ addPet
 ==== Tags
 
 * pet
+
+==== Example request
+:hardbreaks:
+[source,http]
+----
+POST /api/pet/ HTTP/1.1
+Content-Type: application/json
+Content-Length: 111
+
+{"id":1,"category":{"id":1,"name":"Hund"},"name":"Wuffy","photoUrls":[],"tags":[],"status":null,"identifier":1}
+----
+
+==== Example response
+:hardbreaks:
+[source,http]
+----
+HTTP/1.1 200 OK
+Content-Type: application/json
+Content-Length: 7
+
+SUCCESS
+----
 
 === Finds Pets by status
 ----
@@ -102,11 +124,11 @@ Multiple status values can be provided with comma seperated strings
 [options="header"]
 |===
 |HTTP Code|Description|Schema
-|404|Not Found|No Content
 |200|OK|<<Pet>> array
-|401|Unauthorized|No Content
 |400|Invalid status value|No Content
+|401|Unauthorized|No Content
 |403|Forbidden|No Content
+|404|Not Found|No Content
 |===
 
 ==== Consumes
@@ -142,11 +164,11 @@ Muliple tags can be provided with comma seperated strings. Use tag1, tag2, tag3 
 [options="header"]
 |===
 |HTTP Code|Description|Schema
-|404|Not Found|No Content
 |200|OK|<<Pet>> array
-|401|Unauthorized|No Content
 |400|Invalid tag value|No Content
+|401|Unauthorized|No Content
 |403|Forbidden|No Content
+|404|Not Found|No Content
 |===
 
 ==== Consumes
@@ -182,11 +204,11 @@ Returns a pet when ID < 10. ID > 10 or nonintegers will simulate API error condi
 [options="header"]
 |===
 |HTTP Code|Description|Schema
-|404|Not Found|No Content
 |200|OK|<<Pet>>
-|401|Unauthorized|No Content
 |400|Invalid ID supplied|No Content
+|401|Unauthorized|No Content
 |403|Forbidden|No Content
+|404|Not Found|No Content
 |===
 
 ==== Consumes
@@ -222,12 +244,12 @@ placeOrder
 [options="header"]
 |===
 |HTTP Code|Description|Schema
-|404|Not Found|No Content
 |200|OK|string
 |201|Created|No Content
-|401|Unauthorized|No Content
 |400|Invalid Order|No Content
+|401|Unauthorized|No Content
 |403|Forbidden|No Content
+|404|Not Found|No Content
 |===
 
 ==== Consumes
@@ -262,11 +284,11 @@ For valid response try integer IDs with value <= 5 or > 10. Other values will ge
 [options="header"]
 |===
 |HTTP Code|Description|Schema
-|404|Not Found|No Content
 |200|OK|<<Order>>
-|401|Unauthorized|No Content
 |400|Invalid ID supplied|No Content
+|401|Unauthorized|No Content
 |403|Forbidden|No Content
+|404|Not Found|No Content
 |===
 
 ==== Consumes
@@ -301,12 +323,12 @@ For valid response try integer IDs with value < 1000. Anything above 1000 or non
 [options="header"]
 |===
 |HTTP Code|Description|Schema
-|204|No Content|No Content
-|404|Order not found|No Content
 |200|OK|string
-|401|Unauthorized|No Content
 |400|Invalid ID supplied|No Content
+|401|Unauthorized|No Content
+|204|No Content|No Content
 |403|Forbidden|No Content
+|404|Order not found|No Content
 |===
 
 ==== Consumes
@@ -341,11 +363,11 @@ This can only be done by the logged in user.
 [options="header"]
 |===
 |HTTP Code|Description|Schema
-|404|Not Found|No Content
 |200|OK|<<User>>
 |201|Created|No Content
 |401|Unauthorized|No Content
 |403|Forbidden|No Content
+|404|Not Found|No Content
 |===
 
 ==== Consumes
@@ -380,11 +402,11 @@ createUsersWithArrayInput
 [options="header"]
 |===
 |HTTP Code|Description|Schema
-|404|Not Found|No Content
 |200|OK|<<User>>
 |201|Created|No Content
 |401|Unauthorized|No Content
 |403|Forbidden|No Content
+|404|Not Found|No Content
 |===
 
 ==== Consumes
@@ -419,11 +441,11 @@ createUsersWithListInput
 [options="header"]
 |===
 |HTTP Code|Description|Schema
-|404|Not Found|No Content
 |200|OK|string
 |201|Created|No Content
 |401|Unauthorized|No Content
 |403|Forbidden|No Content
+|404|Not Found|No Content
 |===
 
 ==== Consumes
@@ -459,11 +481,11 @@ loginUser
 [options="header"]
 |===
 |HTTP Code|Description|Schema
-|404|Not Found|No Content
 |200|OK|string
-|401|Unauthorized|No Content
 |400|Invalid username/password supplied|No Content
+|401|Unauthorized|No Content
 |403|Forbidden|No Content
+|404|Not Found|No Content
 |===
 
 ==== Consumes
@@ -491,10 +513,10 @@ logoutUser
 [options="header"]
 |===
 |HTTP Code|Description|Schema
-|404|Not Found|No Content
 |200|OK|string
 |401|Unauthorized|No Content
 |403|Forbidden|No Content
+|404|Not Found|No Content
 |===
 
 ==== Consumes
@@ -529,11 +551,11 @@ getUserByName
 [options="header"]
 |===
 |HTTP Code|Description|Schema
-|404|Not Found|No Content
 |200|OK|<<User>>
-|401|Unauthorized|No Content
 |400|Invalid username supplied|No Content
+|401|Unauthorized|No Content
 |403|Forbidden|No Content
+|404|Not Found|No Content
 |===
 
 ==== Consumes
@@ -569,12 +591,12 @@ This can only be done by the logged in user.
 [options="header"]
 |===
 |HTTP Code|Description|Schema
-|404|Not Found|No Content
 |200|OK|string
 |201|Created|No Content
-|401|Unauthorized|No Content
 |400|Invalid user supplied|No Content
+|401|Unauthorized|No Content
 |403|Forbidden|No Content
+|404|Not Found|No Content
 |===
 
 ==== Consumes
@@ -609,12 +631,12 @@ This can only be done by the logged in user.
 [options="header"]
 |===
 |HTTP Code|Description|Schema
-|204|No Content|No Content
-|404|User not found|No Content
 |200|OK|string
-|401|Unauthorized|No Content
 |400|Invalid username supplied|No Content
+|401|Unauthorized|No Content
+|204|No Content|No Content
 |403|Forbidden|No Content
+|404|User not found|No Content
 |===
 
 ==== Consumes

@@ -50,6 +50,7 @@ dependencies {
     testCompile 'com.jayway.restassured:spring-mock-mvc:2.4.0'
     testCompile 'com.fasterxml.jackson.module:jackson-module-jsonSchema:2.4.0'
 }
+
 ext {
     generatedDocumentation = file('src/docs/asciidoc/generated')
 }
@@ -60,6 +61,15 @@ asciidoctor {
         include 'index.adoc'
     }
     backends = ['html5', 'pdf']
+    attributes = [
+            doctype: 'book',
+            toc: 'left',
+            toclevels: '2',
+            numbered: '',
+            sectlinks: '',
+            sectanchors: '',
+            generated: generatedDocumentation
+    ]
 }
 
 

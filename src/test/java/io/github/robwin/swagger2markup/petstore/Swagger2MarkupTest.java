@@ -2,12 +2,14 @@ package io.github.robwin.swagger2markup.petstore;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import io.github.robwin.swagger2markup.documentation.Swagger2MarkupDocumentation;
+import io.github.robwin.swagger2markup.documentation.Swagger2MarkupResultHandler;
 import io.github.robwin.swagger2markup.petstore.model.Category;
 import io.github.robwin.swagger2markup.petstore.model.Pet;
 import org.junit.Before;
+import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.junit.runners.MethodSorters;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +31,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WebAppConfiguration
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = Application.class, loader = SpringApplicationContextLoader.class)
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class Swagger2MarkupTest {
 
     private static final Logger LOG = LoggerFactory.getLogger(Swagger2MarkupTest.class);
@@ -45,20 +48,20 @@ public class Swagger2MarkupTest {
     }
 
     @Test
-    public void createAsciiDoc() throws Exception {
-        this.mockMvc.perform(get("/v2/api-docs")
-                .accept(MediaType.APPLICATION_JSON))
-                .andDo(document("get_swagger_doc"))
-                .andDo(Swagger2MarkupDocumentation.document("swagger_adoc"))
-                .andExpect(status().isOk());
-
-    }
-
-    @Test
     public void findPetById() throws Exception {
         this.mockMvc.perform(post("/api/pet/").content(createPet())
                 .contentType(MediaType.APPLICATION_JSON))
                 .andDo(document("add_a_new_pet_to_the_store"))
+                .andExpect(status().isOk());
+    }
+
+    @Test
+    public void zCreateAsciiDoc() throws Exception {
+        this.mockMvc.perform(get("/v2/api-docs")
+                .accept(MediaType.APPLICATION_JSON))
+                .andDo(document("get_swagger_doc"))
+                .andDo(Swagger2MarkupResultHandler.convertIntoFolder("swagger_adoc")
+                        .withExamples("src/docs/asciidoc/generated").build())
                 .andExpect(status().isOk());
     }
 
