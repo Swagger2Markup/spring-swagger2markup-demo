@@ -7,7 +7,7 @@ buildscript {
         classpath 'org.asciidoctor:asciidoctor-gradle-plugin:1.5.2'
         classpath 'org.asciidoctor:asciidoctorj-pdf:1.5.0-alpha.6'
         classpath 'org.springframework.boot:spring-boot-gradle-plugin:1.2.3.RELEASE'
-        classpath "com.github.samueltbrown:gradle-cucumber-plugin:0.8"
+        //classpath "com.github.samueltbrown:gradle-cucumber-plugin:0.8"
     }
 }
 
@@ -15,7 +15,7 @@ apply plugin: 'java'
 apply plugin: 'maven'
 apply plugin: 'spring-boot'
 apply plugin: 'org.asciidoctor.convert'
-apply plugin: "com.github.samueltbrown.cucumber"
+//apply plugin: "com.github.samueltbrown.cucumber"
 
 version = '1.0'
 group = 'io.github.robwin'
@@ -31,7 +31,6 @@ tasks.withType(JavaCompile) {
 repositories {
     jcenter()
     mavenCentral()
-    mavenLocal()
     maven { url 'https://repo.spring.io/snapshot' }
     maven { url 'http://oss.jfrog.org/artifactory/oss-snapshot-local/' }
 }
@@ -42,7 +41,7 @@ dependencies {
     compile 'org.springframework.boot:spring-boot-starter-actuator'
     compile 'io.springfox:springfox-swagger2:2.0.0-SNAPSHOT'
     testCompile 'org.springframework.boot:spring-boot-starter-test'
-    testCompile 'io.github.robwin:swagger2markup:0.3.0'
+    testCompile 'io.springfox:springfox-staticdocs:2.0.0-SNAPSHOT'
     testCompile 'info.cukes:cucumber-spring:1.2.2'
     testCompile 'info.cukes:cucumber-junit:1.2.2'
     testCompile 'junit:junit:4.11'
@@ -72,7 +71,6 @@ asciidoctor {
     ]
 }
 
-
 jar {
     dependsOn asciidoctor
     from ("${asciidoctor.outputDir}/html5") {
@@ -89,6 +87,7 @@ test {
     outputs.dir generatedDocumentation
 }
 
+/*
 cucumber {
     formats = ['pretty', 'html:build/cucumber/html', 'json:build/cucumber/cucumber.json','junit:build/cucumber/cucumber.xml']
     featureDirs = ['src/test/resources/features']
@@ -96,6 +95,7 @@ cucumber {
         maxHeapSize = '512m'
     }
 }
+*/
 
 task wrapper(type: Wrapper) {
     gradleVersion = '2.2.1'

@@ -1,5 +1,5 @@
-include::{generated}/swagger_adoc/overview.adoc[]
+include::{generated}/overview.adoc[]
 include::manual_content1.adoc[]
 include::manual_content2.adoc[]
-include::{generated}/swagger_adoc/paths.adoc[]
-include::{generated}/swagger_adoc/definitions.adoc[]
+include::{generated}/paths.adoc[]
+include::{generated}/definitions.adoc[]
