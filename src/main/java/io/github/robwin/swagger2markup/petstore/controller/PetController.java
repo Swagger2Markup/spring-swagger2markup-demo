@@ -72,11 +72,7 @@ public class PetController {
   }
 
   @RequestMapping(method = POST)
-  @ApiOperation(value = "Add a new pet to the store",
-          authorizations = @Authorization(type = "oauth2", value = "petstore_auth", scopes = {
-                  @AuthorizationScope(scope = "write:pets", description = ""),
-                  @AuthorizationScope(scope = "read:pets", description = "")
-          }))
+  @ApiOperation(value = "Add a new pet to the store")
   @ApiResponses(value = {@ApiResponse(code = 405, message = "Invalid input")})
   public ResponseEntity<String> addPet(
           @ApiParam(value = "Pet object that needs to be added to the store", required = true) @RequestBody Pet pet) {

@@ -22,10 +22,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
-import springfox.documentation.staticdocs.Swagger2MarkupResultHandler;
 
-import static org.springframework.restdocs.RestDocumentation.document;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -56,6 +53,8 @@ public class Swagger2MarkupTest {
                 .andExpect(status().isOk());
     }
 
+    /*
+
     @Test
     public void zConvertSwaggerToAsciiDoc() throws Exception {
         String outputDir = System.getProperty("io.springfox.staticdocs.outputDir");
@@ -68,6 +67,7 @@ public class Swagger2MarkupTest {
                         .withExamples(examplesOutputDir).build())
                 .andExpect(status().isOk());
     }
+    */
 
     private String createPet() throws JsonProcessingException {
         Pet pet = new Pet();
@@ -77,6 +77,4 @@ public class Swagger2MarkupTest {
         pet.setCategory(category);
         return new ObjectMapper().writeValueAsString(pet);
     }
-
-
 }

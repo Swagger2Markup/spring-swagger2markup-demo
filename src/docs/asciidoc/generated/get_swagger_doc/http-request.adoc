@@ -1,8 +1,0 @@
-
-[source,http]
-----
-GET /v2/api-docs HTTP/1.1
-Accept: application/json
-
-----
-

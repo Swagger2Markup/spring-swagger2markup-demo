@@ -2,12 +2,13 @@ buildscript {
     repositories {
         jcenter()
         mavenCentral()
+        mavenLocal()
     }
     dependencies {
         classpath 'org.asciidoctor:asciidoctor-gradle-plugin:1.5.2'
         classpath 'org.asciidoctor:asciidoctorj-pdf:1.5.0-alpha.6'
         classpath 'org.springframework.boot:spring-boot-gradle-plugin:1.2.3.RELEASE'
-        //classpath "com.github.samueltbrown:gradle-cucumber-plugin:0.8"
+        classpath 'io.github.robwin:swagger2markup-gradle-plugin:0.1.0'
     }
 }
 
@@ -15,7 +16,7 @@ apply plugin: 'java'
 apply plugin: 'maven'
 apply plugin: 'spring-boot'
 apply plugin: 'org.asciidoctor.convert'
-//apply plugin: "com.github.samueltbrown.cucumber"
+apply plugin: 'io.github.robwin.swagger2markup'
 
 version = '1.0'
 group = 'io.github.robwin'
@@ -50,11 +51,22 @@ dependencies {
 }
 
 ext {
-    generatedDocumentation = file('src/docs/asciidoc/generated')
+    generatedDocumentation = file("${buildDir}/asciidoc")
+}
+
+test {
+    systemProperty 'org.springframework.restdocs.outputDir', generatedDocumentation
+    systemProperty 'io.springfox.staticdocs.outputDir', generatedDocumentation
+    outputs.dir generatedDocumentation
+}
+
+convertSwagger2markup {
+    dependsOn test
+    examplesDir generatedDocumentation
 }
 
 asciidoctor {
-    dependsOn test
+    dependsOn convertSwagger2markup
     sources {
         include 'index.adoc'
     }
@@ -66,6 +78,7 @@ asciidoctor {
             numbered: '',
             sectlinks: '',
             sectanchors: '',
+            hardbreaks: '',
             generated: generatedDocumentation
     ]
 }
@@ -78,12 +91,6 @@ jar {
     from ("${asciidoctor.outputDir}/pdf") {
         into 'static/docs'
     }
-}
-
-test {
-    systemProperty 'org.springframework.restdocs.outputDir', generatedDocumentation
-    systemProperty 'io.springfox.staticdocs.outputDir', generatedDocumentation
-    outputs.dir generatedDocumentation
 }
 
 /*
