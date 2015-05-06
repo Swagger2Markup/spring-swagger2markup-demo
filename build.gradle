@@ -39,9 +39,9 @@ repositories {
 dependencies {
     compile 'org.springframework.boot:spring-boot-starter-web'
     compile 'org.springframework.boot:spring-boot-starter-actuator'
-    compile 'io.springfox:springfox-swagger2:2.0.0'
+    compile 'io.springfox:springfox-swagger2:2.0.1-SNAPSHOT'
     testCompile 'org.springframework.boot:spring-boot-starter-test'
-    testCompile 'io.springfox:springfox-staticdocs:2.0.0'
+    testCompile 'io.springfox:springfox-staticdocs:2.0.1-SNAPSHOT'
     testCompile 'info.cukes:cucumber-spring:1.2.2'
     testCompile 'info.cukes:cucumber-junit:1.2.2'
     testCompile 'junit:junit:4.11'
@@ -51,18 +51,19 @@ dependencies {
 }
 
 ext {
-    generatedDocumentation = file("${buildDir}/asciidoc")
+    asciiDocOutputDir = file("${buildDir}/asciidoc")
+    swaggerOutputDir = file("${buildDir}/swagger")
 }
 
 test {
-    systemProperty 'org.springframework.restdocs.outputDir', generatedDocumentation
-    systemProperty 'io.springfox.staticdocs.outputDir', generatedDocumentation
-    outputs.dir generatedDocumentation
+    systemProperty 'org.springframework.restdocs.outputDir', asciiDocOutputDir
+    systemProperty 'io.springfox.staticdocs.outputDir', swaggerOutputDir
 }
 
 convertSwagger2markup {
     dependsOn test
-    examplesDir generatedDocumentation
+    inputDir swaggerOutputDir
+    examplesDir asciiDocOutputDir
 }
 
 asciidoctor {
@@ -79,7 +80,7 @@ asciidoctor {
             sectlinks: '',
             sectanchors: '',
             hardbreaks: '',
-            generated: generatedDocumentation
+            generated: asciiDocOutputDir
     ]
 }
 
