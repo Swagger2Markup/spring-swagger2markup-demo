@@ -18,6 +18,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 import springfox.documentation.staticdocs.SwaggerResultHandler;
@@ -46,19 +47,25 @@ public class Swagger2MarkupTest {
 
     @Test
     public void findPetById() throws Exception {
-        this.mockMvc.perform(post("/api/pet/").content(createPet())
+        this.mockMvc.perform(post("/pets/").content(createPet())
                 .contentType(MediaType.APPLICATION_JSON))
                 .andDo(RestDocumentation.document("add_a_new_pet_to_the_store"))
                 .andExpect(status().isOk());
     }
 
     @Test
-    public void createSwaggerJson() throws Exception {
+    public void createAndValidateSpringfoxSwaggerJson() throws Exception {
+        String designFirstSwaggerLocation = Swagger2MarkupTest.class.getResource("/swagger.yaml").getPath();
+
         String outputDir = System.getProperty("io.springfox.staticdocs.outputDir");
-        this.mockMvc.perform(get("/v2/api-docs")
+        MvcResult mvcResult = this.mockMvc.perform(get("/v2/api-docs")
                 .accept(MediaType.APPLICATION_JSON))
                 .andDo(SwaggerResultHandler.outputDirectory(outputDir).build())
-                .andExpect(status().isOk());
+                .andExpect(status().isOk())
+                .andReturn();
+
+        //String springfoxSwaggerJson = mvcResult.getResponse().getContentAsString();
+        //SwaggerAssertions.assertThat(Swagger20Parser.parse(springfoxSwaggerJson)).isEqualTo(designFirstSwaggerLocation);
     }
 
     private String createPet() throws JsonProcessingException {

@@ -1,5 +1,6 @@
 package io.github.robwin.swagger2markup.petstore;
 
+import com.google.common.base.Predicates;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -28,15 +29,17 @@ public class Application {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
                 .select()
-                .paths(ant("/api/**"))
+                .paths(Predicates.and(ant("/**"), Predicates.not(ant("/error"))))
                 .build();
     }
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("Petstore API Title")
+                .title("Swagger Petstore")
                 .description("Petstore API Description")
-                .contact("Petstore API Contact Email")
+                .contact("apiteam@wordnik.com")
+                .license("Apache 2.0")
+                .licenseUrl("http://www.apache.org/licenses/LICENSE-2.0.html")
                 .version("1.0.0")
                 .build();
     }

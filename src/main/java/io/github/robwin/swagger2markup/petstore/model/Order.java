@@ -19,6 +19,7 @@
 
 package io.github.robwin.swagger2markup.petstore.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.wordnik.swagger.annotations.ApiModelProperty;
 import io.github.robwin.swagger2markup.petstore.repository.Identifiable;
 
@@ -82,6 +83,7 @@ public class Order implements Identifiable<Long> {
   }
 
   @Override
+  @JsonIgnore
   public Long getIdentifier() {
     return id;
   }

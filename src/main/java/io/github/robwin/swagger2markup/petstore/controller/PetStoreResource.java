@@ -32,8 +32,8 @@ import static org.springframework.web.bind.annotation.RequestMethod.*;
 import static io.github.robwin.swagger2markup.petstore.Responses.ok;
 
 @Controller
-@RequestMapping(value = "/api/store", produces = APPLICATION_JSON_VALUE)
-@Api(value = "/store", description = "Operations about store")
+@RequestMapping(value = "/stores", produces = APPLICATION_JSON_VALUE)
+@Api(value = "/stores", description = "Operations about store")
 public class PetStoreResource {
   static StoreData storeData = new StoreData();
 

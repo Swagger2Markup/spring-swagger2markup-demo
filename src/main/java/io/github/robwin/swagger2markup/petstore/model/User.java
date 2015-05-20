@@ -19,6 +19,7 @@
 
 package io.github.robwin.swagger2markup.petstore.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.wordnik.swagger.annotations.ApiModelProperty;
 import io.github.robwin.swagger2markup.petstore.repository.Identifiable;
 
@@ -98,6 +99,7 @@ public class User implements Identifiable<String> {
   }
 
   @Override
+  @JsonIgnore
   public String getIdentifier() {
     return username;
   }

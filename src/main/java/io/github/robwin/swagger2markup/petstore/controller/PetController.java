@@ -38,8 +38,8 @@ import static org.springframework.http.MediaType.APPLICATION_XML_VALUE;
 import static org.springframework.web.bind.annotation.RequestMethod.*;
 
 @Controller
-@RequestMapping(value = "/api/pet", produces = {APPLICATION_JSON_VALUE, APPLICATION_XML_VALUE})
-@Api(value = "/pet", description = "Operations about pets")
+@RequestMapping(value = "/pets", produces = {APPLICATION_JSON_VALUE, APPLICATION_XML_VALUE})
+@Api(value = "/pets", description = "Operations about pets")
 public class PetController {
 
   PetRepository petData = new PetRepository();

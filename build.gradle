@@ -2,12 +2,13 @@ buildscript {
     repositories {
         jcenter()
         mavenCentral()
+        mavenLocal()
     }
     dependencies {
         classpath 'org.asciidoctor:asciidoctor-gradle-plugin:1.5.2'
         classpath 'org.asciidoctor:asciidoctorj-pdf:1.5.0-alpha.6'
         classpath 'org.springframework.boot:spring-boot-gradle-plugin:1.2.3.RELEASE'
-        classpath 'io.github.robwin:swagger2markup-gradle-plugin:0.1.1'
+        classpath 'io.github.robwin:swagger2markup-gradle-plugin:0.1.4'
     }
 }
 
@@ -33,20 +34,20 @@ repositories {
     mavenCentral()
     maven { url 'https://repo.spring.io/snapshot' }
     maven { url 'http://oss.jfrog.org/artifactory/oss-snapshot-local/' }
+    mavenLocal()
 }
 
 dependencies {
     compile 'org.springframework.boot:spring-boot-starter-web'
-    compile 'org.springframework.boot:spring-boot-starter-actuator'
     compile 'io.springfox:springfox-swagger2:2.0.1-SNAPSHOT'
     testCompile 'org.springframework.boot:spring-boot-starter-test'
     testCompile 'io.springfox:springfox-staticdocs:2.0.1-SNAPSHOT'
-    testCompile 'info.cukes:cucumber-spring:1.2.2'
-    testCompile 'info.cukes:cucumber-junit:1.2.2'
-    testCompile 'junit:junit:4.11'
+    testCompile 'junit:junit'
     testCompile 'org.springframework.restdocs:spring-restdocs:0.1.0.BUILD-SNAPSHOT'
     testCompile 'com.jayway.restassured:spring-mock-mvc:2.4.0'
     testCompile 'com.fasterxml.jackson.module:jackson-module-jsonSchema:2.4.0'
+    testCompile 'io.github.robwin:assertj-swagger:0.1.1'
+
 }
 
 ext {
@@ -104,5 +105,5 @@ cucumber {
 */
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '2.3'
+    gradleVersion = '2.4'
 }
