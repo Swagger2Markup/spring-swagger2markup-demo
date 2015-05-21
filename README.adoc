@@ -1,6 +1,6 @@
 = Swagger2Markup Demo
 :author: Robert Winkler
-:version: 0.1.0
+:version: 0.1.2
 :hardbreaks:
 
 image:https://travis-ci.org/RobWin/spring-swagger2markup-demo.svg["Build Status", link="https://travis-ci.org/RobWin/spring-swagger2markup-demo"]
@@ -11,3 +11,16 @@ This project is a https://github.com/RobWin/swagger2markup[Swagger2Markup] (Asci
 The demo shows how to generate static docs (HTML5 and PDF) with the https://github.com/RobWin/swagger2markup-gradle-plugin[swagger2markup-gradle-plugin] and serve them in a Spring Boot app under http://localhost:9080/docs/index.html and http://localhost:9080/docs/index.pdf.
 
 See  https://github.com/RobWin/swagger2markup[Swagger2Markup] and https://github.com/RobWin/swagger2markup-gradle-plugin[swagger2markup-gradle-plugin] for more details and usage guide.
+
+== Usage guide
+If you want to start the Spring Boot application, please run:
+
+[source,groovy]
+----
+gradlew clean build
+----
+
+[subs="attributes"]
+----
+java -jar build/libs/spring-swagger2markup-demo-{version}.jar
+----
