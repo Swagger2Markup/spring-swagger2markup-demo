@@ -39,9 +39,9 @@ repositories {
 
 dependencies {
     compile 'org.springframework.boot:spring-boot-starter-web'
-    compile 'io.springfox:springfox-swagger2:2.0.1-SNAPSHOT'
+    compile 'io.springfox:springfox-swagger2:2.0.1
     testCompile 'org.springframework.boot:spring-boot-starter-test'
-    testCompile 'io.springfox:springfox-staticdocs:2.0.1-SNAPSHOT'
+    testCompile 'io.springfox:springfox-staticdocs:2.0.1'
     testCompile 'junit:junit'
     testCompile 'org.springframework.restdocs:spring-restdocs:0.1.0.BUILD-SNAPSHOT'
     testCompile 'com.jayway.restassured:spring-mock-mvc:2.4.0'
