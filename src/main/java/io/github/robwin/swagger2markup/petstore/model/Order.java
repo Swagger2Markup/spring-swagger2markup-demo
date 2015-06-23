@@ -20,7 +20,7 @@
 package io.github.robwin.swagger2markup.petstore.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.wordnik.swagger.annotations.ApiModelProperty;
+import io.swagger.annotations.ApiModelProperty;
 import io.github.robwin.swagger2markup.petstore.repository.Identifiable;
 
 import java.util.Date;

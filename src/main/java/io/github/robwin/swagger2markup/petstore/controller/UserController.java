@@ -19,7 +19,7 @@
 
 package io.github.robwin.swagger2markup.petstore.controller;
 
-import com.wordnik.swagger.annotations.*;
+import io.swagger.annotations.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;

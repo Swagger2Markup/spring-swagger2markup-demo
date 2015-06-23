@@ -19,7 +19,7 @@
 
 package io.github.robwin.swagger2markup.petstore.controller;
 
-import com.wordnik.swagger.annotations.*;
+import io.swagger.annotations.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -50,8 +50,8 @@ public class PetController {
           "error conditions",
           response = Pet.class,
           authorizations = {
-                  @Authorization(type = "apiKey", value = "api_key"),
-                  @Authorization(type = "oauth2", value = "petstore_auth", scopes = {
+                  @Authorization(value = "api_key"),
+                  @Authorization(value = "petstore_auth", scopes = {
                           @AuthorizationScope(scope = "write:pets", description = ""),
                           @AuthorizationScope(scope = "read:pets", description = "")
                   })})
@@ -82,7 +82,7 @@ public class PetController {
 
   @RequestMapping(method = PUT)
   @ApiOperation(value = "Update an existing pet",
-          authorizations = @Authorization(type = "oauth2", value = "petstore_auth", scopes = {
+          authorizations = @Authorization(value = "petstore_auth", scopes = {
                   @AuthorizationScope(scope = "write:pets", description = ""),
                   @AuthorizationScope(scope = "read:pets", description = "")
           }))
@@ -101,7 +101,7 @@ public class PetController {
           notes = "Multiple status values can be provided with comma seperated strings",
           response = Pet.class,
           responseContainer = "List",
-          authorizations = @Authorization(type = "oauth2", value = "petstore_auth", scopes = {
+          authorizations = @Authorization(value = "petstore_auth", scopes = {
                   @AuthorizationScope(scope = "write:pets", description = ""),
                   @AuthorizationScope(scope = "read:pets", description = "")
           }))
@@ -133,7 +133,7 @@ public class PetController {
           notes = "Muliple tags can be provided with comma seperated strings. Use tag1, tag2, tag3 for testing.",
           response = Pet.class,
           responseContainer = "List",
-          authorizations = @Authorization(type = "oauth2", value = "petstore_auth", scopes = {
+          authorizations = @Authorization(value = "petstore_auth", scopes = {
                   @AuthorizationScope(scope = "write:pets", description = ""),
                   @AuthorizationScope(scope = "read:pets", description = "")
           }))

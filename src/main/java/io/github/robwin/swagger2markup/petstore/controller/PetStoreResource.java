@@ -19,7 +19,7 @@
 
 package io.github.robwin.swagger2markup.petstore.controller;
 
-import com.wordnik.swagger.annotations.*;
+import io.swagger.annotations.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
