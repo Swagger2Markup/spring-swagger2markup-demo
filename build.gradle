@@ -18,7 +18,7 @@ apply plugin: 'spring-boot'
 apply plugin: 'org.asciidoctor.convert'
 apply plugin: 'io.github.robwin.swagger2markup'
 
-version = '1.0.3'
+version = '0.7.0'
 group = 'io.github.robwin'
 
 tasks.withType(JavaCompile) {
