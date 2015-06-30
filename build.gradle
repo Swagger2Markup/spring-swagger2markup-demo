@@ -6,9 +6,9 @@ buildscript {
     }
     dependencies {
         classpath 'org.asciidoctor:asciidoctor-gradle-plugin:1.5.2'
-        classpath 'org.asciidoctor:asciidoctorj-pdf:1.5.0-alpha.6'
+        classpath 'org.asciidoctor:asciidoctorj-pdf:1.5.0-alpha.8'
         classpath 'org.springframework.boot:spring-boot-gradle-plugin:1.2.3.RELEASE'
-        classpath 'io.github.robwin:swagger2markup-gradle-plugin:0.2.0'
+        classpath 'io.github.robwin:swagger2markup-gradle-plugin:0.7.0'
     }
 }
 
@@ -18,7 +18,7 @@ apply plugin: 'spring-boot'
 apply plugin: 'org.asciidoctor.convert'
 apply plugin: 'io.github.robwin.swagger2markup'
 
-version = '1.0.2'
+version = '1.0.3'
 group = 'io.github.robwin'
 
 tasks.withType(JavaCompile) {
@@ -39,11 +39,11 @@ repositories {
 
 dependencies {
     compile 'org.springframework.boot:spring-boot-starter-web'
-    compile 'io.springfox:springfox-swagger2:2.0.2'
+    compile 'io.springfox:springfox-swagger2:2.0.3'
     testCompile 'org.springframework.boot:spring-boot-starter-test'
-    testCompile 'io.springfox:springfox-staticdocs:2.0.2'
+    testCompile 'io.springfox:springfox-staticdocs:2.0.3'
     testCompile 'junit:junit'
-    testCompile 'org.springframework.restdocs:spring-restdocs:0.1.0.BUILD-SNAPSHOT'
+    testCompile 'org.springframework.restdocs:spring-restdocs:1.0.0.M1'
     testCompile 'com.jayway.restassured:spring-mock-mvc:2.4.0'
     testCompile 'com.fasterxml.jackson.module:jackson-module-jsonSchema:2.4.0'
     testCompile 'io.github.robwin:assertj-swagger:0.1.1'
