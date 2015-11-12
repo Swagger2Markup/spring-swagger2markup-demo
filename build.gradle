@@ -8,7 +8,7 @@ buildscript {
         classpath 'org.asciidoctor:asciidoctor-gradle-plugin:1.5.2'
         classpath 'org.asciidoctor:asciidoctorj-pdf:1.5.0-alpha.10.1'
         classpath 'org.springframework.boot:spring-boot-gradle-plugin:1.2.7.RELEASE'
-        classpath 'io.github.robwin:swagger2markup-gradle-plugin:0.9.0'
+        classpath 'io.github.robwin:swagger2markup-gradle-plugin:0.9.1'
     }
 }
 
@@ -18,7 +18,7 @@ apply plugin: 'spring-boot'
 apply plugin: 'org.asciidoctor.convert'
 apply plugin: 'io.github.robwin.swagger2markup'
 
-version = '0.9.0'
+version = '0.9.1'
 group = 'io.github.robwin'
 
 tasks.withType(JavaCompile) {
@@ -64,6 +64,7 @@ convertSwagger2markup {
     dependsOn test
     inputDir swaggerOutputDir
     examplesDir asciiDocOutputDir
+    pathsGroupedBy io.github.robwin.swagger2markup.GroupBy.TAGS
 }
 
 asciidoctor {
@@ -75,7 +76,7 @@ asciidoctor {
     attributes = [
             doctype: 'book',
             toc: 'left',
-            toclevels: '2',
+            toclevels: '3',
             numbered: '',
             sectlinks: '',
             sectanchors: '',
