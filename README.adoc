@@ -32,5 +32,5 @@ If you only want to generate the HTML and PDF documentation, please run:
 gradlew clean asciidoctor
 ----
 
-The results are generated into build\asciidoc\html5 and build\asciidoc\pdf.
+The results are generated into `build\asciidoc\html5` and `build\asciidoc\pdf`.
 
