@@ -103,16 +103,6 @@ jar {
     }
 }
 
-/*
-cucumber {
-    formats = ['pretty', 'html:build/cucumber/html', 'json:build/cucumber/cucumber.json','junit:build/cucumber/cucumber.xml']
-    featureDirs = ['src/test/resources/features']
-    jvmOptions {
-        maxHeapSize = '512m'
-    }
-}
-*/
-
 task wrapper(type: Wrapper) {
     gradleVersion = '2.4'
 }
