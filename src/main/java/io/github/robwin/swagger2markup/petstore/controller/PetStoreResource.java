@@ -33,7 +33,7 @@ import static io.github.robwin.swagger2markup.petstore.Responses.ok;
 
 @Controller
 @RequestMapping(value = "/stores", produces = APPLICATION_JSON_VALUE)
-@Api(value = "/stores", description = "Operations about store")
+@Api(value = "/stores", tags = "Stores", description = "Operations about store")
 public class PetStoreResource {
   static StoreData storeData = new StoreData();
 

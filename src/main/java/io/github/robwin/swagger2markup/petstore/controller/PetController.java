@@ -39,7 +39,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.*;
 
 @Controller
 @RequestMapping(value = "/pets", produces = {APPLICATION_JSON_VALUE, APPLICATION_XML_VALUE})
-@Api(value = "/pets", description = "Operations about pets")
+@Api(value = "/pets", tags = "Pets", description = "Operations about pets")
 public class PetController {
 
   PetRepository petData = new PetRepository();

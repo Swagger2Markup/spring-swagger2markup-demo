@@ -19,15 +19,15 @@
 
 package io.github.robwin.swagger2markup.petstore.controller;
 
+import io.github.robwin.swagger2markup.petstore.Responses;
+import io.github.robwin.swagger2markup.petstore.model.User;
+import io.github.robwin.swagger2markup.petstore.repository.MapBackedRepository;
 import io.swagger.annotations.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import io.github.robwin.swagger2markup.petstore.Responses;
-import io.github.robwin.swagger2markup.petstore.model.User;
-import io.github.robwin.swagger2markup.petstore.repository.MapBackedRepository;
 
 import java.util.List;
 
@@ -35,7 +35,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.*;
 
 @Controller
 @RequestMapping(value = "/users", produces = MediaType.APPLICATION_JSON_VALUE)
-@Api(value = "/users", description = "Operations about user")
+@Api(value = "/users", tags = "Users", description = "Operations about user")
 public class UserController {
   UserRepository userRepository = new UserRepository();
 
