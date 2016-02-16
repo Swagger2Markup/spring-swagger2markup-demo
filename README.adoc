@@ -34,3 +34,7 @@ gradlew clean asciidoctor
 
 The results are generated into `build\asciidoc\html5` and `build\asciidoc\pdf`.
 
+== Screenshot
+
+image::images/Demo.PNG
+
