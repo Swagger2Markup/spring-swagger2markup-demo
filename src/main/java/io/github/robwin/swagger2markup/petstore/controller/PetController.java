@@ -52,8 +52,8 @@ public class PetController {
           authorizations = {
                   @Authorization(value = "api_key"),
                   @Authorization(value = "petstore_auth", scopes = {
-                          @AuthorizationScope(scope = "write:pets", description = ""),
-                          @AuthorizationScope(scope = "read:pets", description = "")
+                          @AuthorizationScope(scope = "write_pets", description = ""),
+                          @AuthorizationScope(scope = "read_pets", description = "")
                   })})
   @ApiResponses(value = {
           @ApiResponse(code = 400, message = "Invalid ID supplied"),
@@ -83,8 +83,8 @@ public class PetController {
   @RequestMapping(method = PUT)
   @ApiOperation(value = "Update an existing pet",
           authorizations = @Authorization(value = "petstore_auth", scopes = {
-                  @AuthorizationScope(scope = "write:pets", description = ""),
-                  @AuthorizationScope(scope = "read:pets", description = "")
+                  @AuthorizationScope(scope = "write_pets", description = ""),
+                  @AuthorizationScope(scope = "read_pets", description = "")
           }))
   @ApiResponses(value = {@ApiResponse(code = 400, message = "Invalid ID supplied"),
           @ApiResponse(code = 404, message = "Pet not found"),
@@ -102,8 +102,8 @@ public class PetController {
           response = Pet.class,
           responseContainer = "List",
           authorizations = @Authorization(value = "petstore_auth", scopes = {
-                  @AuthorizationScope(scope = "write:pets", description = ""),
-                  @AuthorizationScope(scope = "read:pets", description = "")
+                  @AuthorizationScope(scope = "write_pets", description = ""),
+                  @AuthorizationScope(scope = "read_pets", description = "")
           }))
   @ApiResponses(value = {@ApiResponse(code = 400, message = "Invalid status value")})
   /** TODO: This renders parameter as
@@ -134,8 +134,8 @@ public class PetController {
           response = Pet.class,
           responseContainer = "List",
           authorizations = @Authorization(value = "petstore_auth", scopes = {
-                  @AuthorizationScope(scope = "write:pets", description = ""),
-                  @AuthorizationScope(scope = "read:pets", description = "")
+                  @AuthorizationScope(scope = "write_pets", description = ""),
+                  @AuthorizationScope(scope = "read_pets", description = "")
           }))
   @ApiResponses(value = {@ApiResponse(code = 400, message = "Invalid tag value")})
   @Deprecated

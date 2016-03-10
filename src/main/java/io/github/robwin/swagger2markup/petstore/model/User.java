@@ -29,9 +29,9 @@ public class User implements Identifiable<String> {
   private long id;
   @Size(min=1, max=100)
   private String username;
-  @Size(min=1, max=100)
+  @Size(min=1, max=200)
   private String firstName;
-  @Size(min=1, max=100)
+  @Size(min=1, max=200)
   private String lastName;
   private String email;
   private String password;
