@@ -37,7 +37,7 @@ The results are generated into `build\asciidoc\html5` and `build\asciidoc\pdf`.
 == Demo
 
 [subs="attributes"]
-See demo live on GitHub Pages: http://swagger2markup.github.io/spring-swagger2markup-demo/{version}
+See live demo on GitHub Pages: http://swagger2markup.github.io/spring-swagger2markup-demo/{version}
 
 == Screenshot
 
