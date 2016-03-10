@@ -22,8 +22,11 @@ package io.github.robwin.swagger2markup.petstore.model;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import javax.validation.constraints.Size;
+
 public class Category {
   private long id;
+  @Size(min=1, max=100)
   private String name;
 
   public Category(long id, String name) {

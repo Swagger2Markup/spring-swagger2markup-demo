@@ -23,12 +23,14 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.annotations.ApiModelProperty;
 import io.github.robwin.swagger2markup.petstore.repository.Identifiable;
 
+import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Pet implements Identifiable<Long> {
   private long id;
   private Category category;
+  @Size(min=1, max=100)
   private String name;
   private List<String> photoUrls = new ArrayList<String>();
   private List<Tag> tags = new ArrayList<Tag>();

@@ -23,10 +23,15 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.annotations.ApiModelProperty;
 import io.github.robwin.swagger2markup.petstore.repository.Identifiable;
 
+import javax.validation.constraints.Size;
+
 public class User implements Identifiable<String> {
   private long id;
+  @Size(min=1, max=100)
   private String username;
+  @Size(min=1, max=100)
   private String firstName;
+  @Size(min=1, max=100)
   private String lastName;
   private String email;
   private String password;

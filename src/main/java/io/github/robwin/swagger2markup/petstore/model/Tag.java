@@ -19,8 +19,11 @@
 
 package io.github.robwin.swagger2markup.petstore.model;
 
+import javax.validation.constraints.Size;
+
 public class Tag {
   private long id;
+  @Size(min=1, max=100)
   private String name;
 
   public long getId() {

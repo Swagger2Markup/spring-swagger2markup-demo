@@ -34,6 +34,10 @@ gradlew clean asciidoctor
 
 The results are generated into `build\asciidoc\html5` and `build\asciidoc\pdf`.
 
+== Demo
+
+See demo live on http://swagger2markup.github.io/spring-swagger2markup-demo[GitHub Pages]
+
 == Screenshot
 
 image:images/Demo.PNG[]
