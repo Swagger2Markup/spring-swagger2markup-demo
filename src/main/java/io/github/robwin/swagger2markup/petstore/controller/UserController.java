@@ -79,8 +79,24 @@ public class UserController {
   @ResponseBody
   @ApiOperation(value = "Updated user", notes = "This can only be done by the logged in user.")
   @ApiResponses(value = {
-          @ApiResponse(code = 400, message = "Invalid user supplied"),
-          @ApiResponse(code = 404, message = "User not found")})
+          @ApiResponse(code = 400, message = "Invalid user supplied",
+                  responseHeaders = {
+                          @ResponseHeader(
+                            name = "X-Rate-Limit-Limit",
+                            description = "The number of allowed requests in the current period"),
+                          @ResponseHeader(
+                            name = "X-Rate-Limit-Remaining",
+                            description = "The number of remaining requests in the current period")
+          }),
+          @ApiResponse(code = 404, message = "User not found",
+                  responseHeaders = {
+                          @ResponseHeader(
+                                  name = "X-Rate-Limit-Limit",
+                                  description = "The number of allowed requests in the current period"),
+                          @ResponseHeader(
+                                  name = "X-Rate-Limit-Remaining",
+                                  description = "The number of remaining requests in the current period")
+                  })})
   public ResponseEntity<String> updateUser(
           @ApiParam(value = "name that need to be deleted", required = true)
           @PathVariable("username") String username,
