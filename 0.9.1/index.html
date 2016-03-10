@@ -442,11 +442,11 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <ul class="sectlevel2">
 <li><a href="#_pets">4.1. Pets</a>
 <ul class="sectlevel3">
-<li><a href="#_update_an_existing_pet">4.1.1. Update an existing pet</a></li>
-<li><a href="#_add_a_new_pet_to_the_store">4.1.2. Add a new pet to the store</a></li>
-<li><a href="#_finds_pets_by_status">4.1.3. Finds Pets by status</a></li>
-<li><a href="#_finds_pets_by_tags">4.1.4. Finds Pets by tags</a></li>
-<li><a href="#_find_pet_by_id">4.1.5. Find pet by ID</a></li>
+<li><a href="#_finds_pets_by_tags">4.1.1. Finds Pets by tags</a></li>
+<li><a href="#_update_an_existing_pet">4.1.2. Update an existing pet</a></li>
+<li><a href="#_add_a_new_pet_to_the_store">4.1.3. Add a new pet to the store</a></li>
+<li><a href="#_find_pet_by_id">4.1.4. Find pet by ID</a></li>
+<li><a href="#_finds_pets_by_status">4.1.5. Finds Pets by status</a></li>
 </ul>
 </li>
 <li><a href="#_stores">4.2. Stores</a>
@@ -458,14 +458,14 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#_users">4.3. Users</a>
 <ul class="sectlevel3">
-<li><a href="#_create_user">4.3.1. Create user</a></li>
-<li><a href="#_creates_list_of_users_with_given_input_array">4.3.2. Creates list of users with given input array</a></li>
-<li><a href="#_creates_list_of_users_with_given_input_array_2">4.3.3. Creates list of users with given input array</a></li>
-<li><a href="#_logs_out_current_logged_in_user_session">4.3.4. Logs out current logged in user session</a></li>
-<li><a href="#_logs_user_into_the_system">4.3.5. Logs user into the system</a></li>
-<li><a href="#_updated_user">4.3.6. Updated user</a></li>
-<li><a href="#_get_user_by_user_name">4.3.7. Get user by user name</a></li>
-<li><a href="#_delete_user">4.3.8. Delete user</a></li>
+<li><a href="#_updated_user">4.3.1. Updated user</a></li>
+<li><a href="#_get_user_by_user_name">4.3.2. Get user by user name</a></li>
+<li><a href="#_delete_user">4.3.3. Delete user</a></li>
+<li><a href="#_creates_list_of_users_with_given_input_array">4.3.4. Creates list of users with given input array</a></li>
+<li><a href="#_creates_list_of_users_with_given_input_array_2">4.3.5. Creates list of users with given input array</a></li>
+<li><a href="#_logs_out_current_logged_in_user_session">4.3.6. Logs out current logged in user session</a></li>
+<li><a href="#_create_user">4.3.7. Create user</a></li>
+<li><a href="#_logs_user_into_the_system">4.3.8. Logs user into the system</a></li>
 </ul>
 </li>
 </ul>
@@ -565,10 +565,16 @@ BasePath: /</p>
 <p>Operations about pets</p>
 </div>
 <div class="sect3">
-<h4 id="_update_an_existing_pet"><a class="anchor" href="#_update_an_existing_pet"></a>4.1.1. Update an existing pet</h4>
+<h4 id="_finds_pets_by_tags"><a class="anchor" href="#_finds_pets_by_tags"></a>4.1.1. Finds Pets by tags</h4>
 <div class="listingblock">
 <div class="content">
-<pre>PUT /pets</pre>
+<pre>GET /pets/findByTags</pre>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_description"><a class="anchor" href="#_description"></a>Description</h5>
+<div class="paragraph">
+<p>Muliple tags can be provided with comma seperated strings. Use tag1, tag2, tag3 for testing.</p>
 </div>
 </div>
 <div class="sect4">
@@ -594,11 +600,11 @@ BasePath: /</p>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">BodyParameter</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">pet</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Pet object that needs to be added to the store</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">QueryParameter</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">tags</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Tags to filter by</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#_pet">Pet</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 </tbody>
@@ -623,16 +629,11 @@ BasePath: /</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">200</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">OK</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">201</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Created</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">No Content</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#_pet">Pet</a> array</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">400</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Invalid ID supplied</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Invalid tag value</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">No Content</p></td>
 </tr>
 <tr>
@@ -647,12 +648,7 @@ BasePath: /</p>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">404</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Pet not found</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">No Content</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">405</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Validation exception</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Not Found</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">No Content</p></td>
 </tr>
 </tbody>
@@ -683,10 +679,10 @@ BasePath: /</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_add_a_new_pet_to_the_store"><a class="anchor" href="#_add_a_new_pet_to_the_store"></a>4.1.2. Add a new pet to the store</h4>
+<h4 id="_update_an_existing_pet"><a class="anchor" href="#_update_an_existing_pet"></a>4.1.2. Update an existing pet</h4>
 <div class="listingblock">
 <div class="content">
-<pre>POST /pets</pre>
+<pre>PUT /pets</pre>
 </div>
 </div>
 <div class="sect4">
@@ -749,6 +745,124 @@ BasePath: /</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">No Content</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">400</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Invalid ID supplied</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No Content</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">401</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Unauthorized</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No Content</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">403</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Forbidden</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No Content</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">404</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Pet not found</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No Content</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">405</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Validation exception</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No Content</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_consumes_2"><a class="anchor" href="#_consumes_2"></a>Consumes</h5>
+<div class="ulist">
+<ul>
+<li>
+<p>application/json</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_produces_2"><a class="anchor" href="#_produces_2"></a>Produces</h5>
+<div class="ulist">
+<ul>
+<li>
+<p>application/xml</p>
+</li>
+<li>
+<p>application/json</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_add_a_new_pet_to_the_store"><a class="anchor" href="#_add_a_new_pet_to_the_store"></a>4.1.3. Add a new pet to the store</h4>
+<div class="listingblock">
+<div class="content">
+<pre>POST /pets</pre>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_parameters_3"><a class="anchor" href="#_parameters_3"></a>Parameters</h5>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16%;">
+<col style="width: 16%;">
+<col style="width: 16%;">
+<col style="width: 16%;">
+<col style="width: 16%;">
+<col style="width: 16%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Required</th>
+<th class="tableblock halign-left valign-top">Schema</th>
+<th class="tableblock halign-left valign-top">Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">BodyParameter</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">pet</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Pet object that needs to be added to the store</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#_pet">Pet</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_responses_3"><a class="anchor" href="#_responses_3"></a>Responses</h5>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 33%;">
+<col style="width: 33%;">
+<col style="width: 33%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">HTTP Code</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Schema</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">200</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">OK</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">201</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Created</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No Content</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">401</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Unauthorized</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">No Content</p></td>
@@ -772,7 +886,7 @@ BasePath: /</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_consumes_2"><a class="anchor" href="#_consumes_2"></a>Consumes</h5>
+<h5 id="_consumes_3"><a class="anchor" href="#_consumes_3"></a>Consumes</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -782,7 +896,7 @@ BasePath: /</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_produces_2"><a class="anchor" href="#_produces_2"></a>Produces</h5>
+<h5 id="_produces_3"><a class="anchor" href="#_produces_3"></a>Produces</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -829,248 +943,20 @@ SUCCESS</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_finds_pets_by_status"><a class="anchor" href="#_finds_pets_by_status"></a>4.1.3. Finds Pets by status</h4>
-<div class="listingblock">
-<div class="content">
-<pre>GET /pets/findByStatus</pre>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_description"><a class="anchor" href="#_description"></a>Description</h5>
-<div class="paragraph">
-<p>Multiple status values can be provided with comma seperated strings</p>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_parameters_3"><a class="anchor" href="#_parameters_3"></a>Parameters</h5>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 16%;">
-<col style="width: 16%;">
-<col style="width: 16%;">
-<col style="width: 16%;">
-<col style="width: 16%;">
-<col style="width: 16%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Type</th>
-<th class="tableblock halign-left valign-top">Name</th>
-<th class="tableblock halign-left valign-top">Description</th>
-<th class="tableblock halign-left valign-top">Required</th>
-<th class="tableblock halign-left valign-top">Schema</th>
-<th class="tableblock halign-left valign-top">Default</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">QueryParameter</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">status</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Status values that need to be considered for filter</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">enum (available, pending, sold)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">available</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect4">
-<h5 id="_responses_3"><a class="anchor" href="#_responses_3"></a>Responses</h5>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 33%;">
-<col style="width: 33%;">
-<col style="width: 33%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">HTTP Code</th>
-<th class="tableblock halign-left valign-top">Description</th>
-<th class="tableblock halign-left valign-top">Schema</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">200</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">OK</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#_pet">Pet</a> array</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">400</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Invalid status value</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">No Content</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">401</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Unauthorized</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">No Content</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">403</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Forbidden</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">No Content</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">404</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Not Found</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">No Content</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect4">
-<h5 id="_consumes_3"><a class="anchor" href="#_consumes_3"></a>Consumes</h5>
-<div class="ulist">
-<ul>
-<li>
-<p>application/json</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_produces_3"><a class="anchor" href="#_produces_3"></a>Produces</h5>
-<div class="ulist">
-<ul>
-<li>
-<p>application/xml</p>
-</li>
-<li>
-<p>application/json</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_finds_pets_by_tags"><a class="anchor" href="#_finds_pets_by_tags"></a>4.1.4. Finds Pets by tags</h4>
-<div class="listingblock">
-<div class="content">
-<pre>GET /pets/findByTags</pre>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_description_2"><a class="anchor" href="#_description_2"></a>Description</h5>
-<div class="paragraph">
-<p>Muliple tags can be provided with comma seperated strings. Use tag1, tag2, tag3 for testing.</p>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_parameters_4"><a class="anchor" href="#_parameters_4"></a>Parameters</h5>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 16%;">
-<col style="width: 16%;">
-<col style="width: 16%;">
-<col style="width: 16%;">
-<col style="width: 16%;">
-<col style="width: 16%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Type</th>
-<th class="tableblock halign-left valign-top">Name</th>
-<th class="tableblock halign-left valign-top">Description</th>
-<th class="tableblock halign-left valign-top">Required</th>
-<th class="tableblock halign-left valign-top">Schema</th>
-<th class="tableblock halign-left valign-top">Default</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">QueryParameter</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">tags</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Tags to filter by</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect4">
-<h5 id="_responses_4"><a class="anchor" href="#_responses_4"></a>Responses</h5>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 33%;">
-<col style="width: 33%;">
-<col style="width: 33%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">HTTP Code</th>
-<th class="tableblock halign-left valign-top">Description</th>
-<th class="tableblock halign-left valign-top">Schema</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">200</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">OK</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#_pet">Pet</a> array</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">400</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Invalid tag value</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">No Content</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">401</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Unauthorized</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">No Content</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">403</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Forbidden</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">No Content</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">404</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Not Found</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">No Content</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect4">
-<h5 id="_consumes_4"><a class="anchor" href="#_consumes_4"></a>Consumes</h5>
-<div class="ulist">
-<ul>
-<li>
-<p>application/json</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_produces_4"><a class="anchor" href="#_produces_4"></a>Produces</h5>
-<div class="ulist">
-<ul>
-<li>
-<p>application/xml</p>
-</li>
-<li>
-<p>application/json</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_find_pet_by_id"><a class="anchor" href="#_find_pet_by_id"></a>4.1.5. Find pet by ID</h4>
+<h4 id="_find_pet_by_id"><a class="anchor" href="#_find_pet_by_id"></a>4.1.4. Find pet by ID</h4>
 <div class="listingblock">
 <div class="content">
 <pre>GET /pets/{petId}</pre>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_description_3"><a class="anchor" href="#_description_3"></a>Description</h5>
+<h5 id="_description_2"><a class="anchor" href="#_description_2"></a>Description</h5>
 <div class="paragraph">
 <p>Returns a pet when ID &lt; 10. ID &gt; 10 or nonintegers will simulate API error conditions</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_parameters_5"><a class="anchor" href="#_parameters_5"></a>Parameters</h5>
+<h5 id="_parameters_4"><a class="anchor" href="#_parameters_4"></a>Parameters</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16%;">
@@ -1103,7 +989,7 @@ SUCCESS</code></pre>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_responses_5"><a class="anchor" href="#_responses_5"></a>Responses</h5>
+<h5 id="_responses_4"><a class="anchor" href="#_responses_4"></a>Responses</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 33%;">
@@ -1141,6 +1027,120 @@ SUCCESS</code></pre>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">404</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Pet not found</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No Content</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_consumes_4"><a class="anchor" href="#_consumes_4"></a>Consumes</h5>
+<div class="ulist">
+<ul>
+<li>
+<p>application/json</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_produces_4"><a class="anchor" href="#_produces_4"></a>Produces</h5>
+<div class="ulist">
+<ul>
+<li>
+<p>application/xml</p>
+</li>
+<li>
+<p>application/json</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_finds_pets_by_status"><a class="anchor" href="#_finds_pets_by_status"></a>4.1.5. Finds Pets by status</h4>
+<div class="listingblock">
+<div class="content">
+<pre>GET /pets/findByStatus</pre>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_description_3"><a class="anchor" href="#_description_3"></a>Description</h5>
+<div class="paragraph">
+<p>Multiple status values can be provided with comma seperated strings</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_parameters_5"><a class="anchor" href="#_parameters_5"></a>Parameters</h5>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16%;">
+<col style="width: 16%;">
+<col style="width: 16%;">
+<col style="width: 16%;">
+<col style="width: 16%;">
+<col style="width: 16%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Required</th>
+<th class="tableblock halign-left valign-top">Schema</th>
+<th class="tableblock halign-left valign-top">Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">QueryParameter</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">status</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Status values that need to be considered for filter</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enum (available, pending, sold)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">available</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_responses_5"><a class="anchor" href="#_responses_5"></a>Responses</h5>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 33%;">
+<col style="width: 33%;">
+<col style="width: 33%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">HTTP Code</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Schema</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">200</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">OK</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#_pet">Pet</a> array</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">400</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Invalid status value</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No Content</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">401</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Unauthorized</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No Content</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">403</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Forbidden</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No Content</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">404</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Not Found</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">No Content</p></td>
 </tr>
 </tbody>
@@ -1520,10 +1520,10 @@ SUCCESS</code></pre>
 <p>Operations about user</p>
 </div>
 <div class="sect3">
-<h4 id="_create_user"><a class="anchor" href="#_create_user"></a>4.3.1. Create user</h4>
+<h4 id="_updated_user"><a class="anchor" href="#_updated_user"></a>4.3.1. Updated user</h4>
 <div class="listingblock">
 <div class="content">
-<pre>POST /users</pre>
+<pre>PUT /users/{username}</pre>
 </div>
 </div>
 <div class="sect4">
@@ -1534,507 +1534,6 @@ SUCCESS</code></pre>
 </div>
 <div class="sect4">
 <h5 id="_parameters_9"><a class="anchor" href="#_parameters_9"></a>Parameters</h5>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 16%;">
-<col style="width: 16%;">
-<col style="width: 16%;">
-<col style="width: 16%;">
-<col style="width: 16%;">
-<col style="width: 16%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Type</th>
-<th class="tableblock halign-left valign-top">Name</th>
-<th class="tableblock halign-left valign-top">Description</th>
-<th class="tableblock halign-left valign-top">Required</th>
-<th class="tableblock halign-left valign-top">Schema</th>
-<th class="tableblock halign-left valign-top">Default</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">BodyParameter</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Created user object</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#_user">User</a></p></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect4">
-<h5 id="_responses_9"><a class="anchor" href="#_responses_9"></a>Responses</h5>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 33%;">
-<col style="width: 33%;">
-<col style="width: 33%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">HTTP Code</th>
-<th class="tableblock halign-left valign-top">Description</th>
-<th class="tableblock halign-left valign-top">Schema</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">200</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">OK</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#_user">User</a></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">201</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Created</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">No Content</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">401</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Unauthorized</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">No Content</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">403</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Forbidden</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">No Content</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">404</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Not Found</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">No Content</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect4">
-<h5 id="_consumes_9"><a class="anchor" href="#_consumes_9"></a>Consumes</h5>
-<div class="ulist">
-<ul>
-<li>
-<p>application/json</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_produces_9"><a class="anchor" href="#_produces_9"></a>Produces</h5>
-<div class="ulist">
-<ul>
-<li>
-<p>application/json</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_creates_list_of_users_with_given_input_array"><a class="anchor" href="#_creates_list_of_users_with_given_input_array"></a>4.3.2. Creates list of users with given input array</h4>
-<div class="listingblock">
-<div class="content">
-<pre>POST /users/createWithArray</pre>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_parameters_10"><a class="anchor" href="#_parameters_10"></a>Parameters</h5>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 16%;">
-<col style="width: 16%;">
-<col style="width: 16%;">
-<col style="width: 16%;">
-<col style="width: 16%;">
-<col style="width: 16%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Type</th>
-<th class="tableblock halign-left valign-top">Name</th>
-<th class="tableblock halign-left valign-top">Description</th>
-<th class="tableblock halign-left valign-top">Required</th>
-<th class="tableblock halign-left valign-top">Schema</th>
-<th class="tableblock halign-left valign-top">Default</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">BodyParameter</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">users</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">List of user object</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#_user">User</a> array</p></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect4">
-<h5 id="_responses_10"><a class="anchor" href="#_responses_10"></a>Responses</h5>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 33%;">
-<col style="width: 33%;">
-<col style="width: 33%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">HTTP Code</th>
-<th class="tableblock halign-left valign-top">Description</th>
-<th class="tableblock halign-left valign-top">Schema</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">200</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">OK</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#_user">User</a></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">201</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Created</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">No Content</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">401</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Unauthorized</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">No Content</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">403</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Forbidden</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">No Content</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">404</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Not Found</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">No Content</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect4">
-<h5 id="_consumes_10"><a class="anchor" href="#_consumes_10"></a>Consumes</h5>
-<div class="ulist">
-<ul>
-<li>
-<p>application/json</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_produces_10"><a class="anchor" href="#_produces_10"></a>Produces</h5>
-<div class="ulist">
-<ul>
-<li>
-<p>application/json</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_creates_list_of_users_with_given_input_array_2"><a class="anchor" href="#_creates_list_of_users_with_given_input_array_2"></a>4.3.3. Creates list of users with given input array</h4>
-<div class="listingblock">
-<div class="content">
-<pre>POST /users/createWithList</pre>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_parameters_11"><a class="anchor" href="#_parameters_11"></a>Parameters</h5>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 16%;">
-<col style="width: 16%;">
-<col style="width: 16%;">
-<col style="width: 16%;">
-<col style="width: 16%;">
-<col style="width: 16%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Type</th>
-<th class="tableblock halign-left valign-top">Name</th>
-<th class="tableblock halign-left valign-top">Description</th>
-<th class="tableblock halign-left valign-top">Required</th>
-<th class="tableblock halign-left valign-top">Schema</th>
-<th class="tableblock halign-left valign-top">Default</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">BodyParameter</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">users</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">List of user object</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#_user">User</a> array</p></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect4">
-<h5 id="_responses_11"><a class="anchor" href="#_responses_11"></a>Responses</h5>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 33%;">
-<col style="width: 33%;">
-<col style="width: 33%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">HTTP Code</th>
-<th class="tableblock halign-left valign-top">Description</th>
-<th class="tableblock halign-left valign-top">Schema</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">200</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">OK</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">201</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Created</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">No Content</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">401</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Unauthorized</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">No Content</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">403</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Forbidden</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">No Content</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">404</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Not Found</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">No Content</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect4">
-<h5 id="_consumes_11"><a class="anchor" href="#_consumes_11"></a>Consumes</h5>
-<div class="ulist">
-<ul>
-<li>
-<p>application/json</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_produces_11"><a class="anchor" href="#_produces_11"></a>Produces</h5>
-<div class="ulist">
-<ul>
-<li>
-<p>application/json</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_logs_out_current_logged_in_user_session"><a class="anchor" href="#_logs_out_current_logged_in_user_session"></a>4.3.4. Logs out current logged in user session</h4>
-<div class="listingblock">
-<div class="content">
-<pre>GET /users/logout</pre>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_responses_12"><a class="anchor" href="#_responses_12"></a>Responses</h5>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 33%;">
-<col style="width: 33%;">
-<col style="width: 33%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">HTTP Code</th>
-<th class="tableblock halign-left valign-top">Description</th>
-<th class="tableblock halign-left valign-top">Schema</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">200</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">OK</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">401</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Unauthorized</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">No Content</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">403</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Forbidden</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">No Content</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">404</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Not Found</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">No Content</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect4">
-<h5 id="_consumes_12"><a class="anchor" href="#_consumes_12"></a>Consumes</h5>
-<div class="ulist">
-<ul>
-<li>
-<p>application/json</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_produces_12"><a class="anchor" href="#_produces_12"></a>Produces</h5>
-<div class="ulist">
-<ul>
-<li>
-<p>application/json</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_logs_user_into_the_system"><a class="anchor" href="#_logs_user_into_the_system"></a>4.3.5. Logs user into the system</h4>
-<div class="listingblock">
-<div class="content">
-<pre>GET /users/login</pre>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_parameters_12"><a class="anchor" href="#_parameters_12"></a>Parameters</h5>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 16%;">
-<col style="width: 16%;">
-<col style="width: 16%;">
-<col style="width: 16%;">
-<col style="width: 16%;">
-<col style="width: 16%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Type</th>
-<th class="tableblock halign-left valign-top">Name</th>
-<th class="tableblock halign-left valign-top">Description</th>
-<th class="tableblock halign-left valign-top">Required</th>
-<th class="tableblock halign-left valign-top">Schema</th>
-<th class="tableblock halign-left valign-top">Default</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">QueryParameter</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">username</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The user name for login</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">QueryParameter</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">password</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The password for login in clear text</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect4">
-<h5 id="_responses_13"><a class="anchor" href="#_responses_13"></a>Responses</h5>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 33%;">
-<col style="width: 33%;">
-<col style="width: 33%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">HTTP Code</th>
-<th class="tableblock halign-left valign-top">Description</th>
-<th class="tableblock halign-left valign-top">Schema</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">200</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">OK</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">400</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Invalid username/password supplied</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">No Content</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">401</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Unauthorized</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">No Content</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">403</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Forbidden</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">No Content</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">404</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Not Found</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">No Content</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect4">
-<h5 id="_consumes_13"><a class="anchor" href="#_consumes_13"></a>Consumes</h5>
-<div class="ulist">
-<ul>
-<li>
-<p>application/json</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_produces_13"><a class="anchor" href="#_produces_13"></a>Produces</h5>
-<div class="ulist">
-<ul>
-<li>
-<p>application/json</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_updated_user"><a class="anchor" href="#_updated_user"></a>4.3.6. Updated user</h4>
-<div class="listingblock">
-<div class="content">
-<pre>PUT /users/{username}</pre>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_description_7"><a class="anchor" href="#_description_7"></a>Description</h5>
-<div class="paragraph">
-<p>This can only be done by the logged in user.</p>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_parameters_13"><a class="anchor" href="#_parameters_13"></a>Parameters</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16%;">
@@ -2075,7 +1574,7 @@ SUCCESS</code></pre>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_responses_14"><a class="anchor" href="#_responses_14"></a>Responses</h5>
+<h5 id="_responses_9"><a class="anchor" href="#_responses_9"></a>Responses</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 33%;">
@@ -2124,7 +1623,7 @@ SUCCESS</code></pre>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_consumes_14"><a class="anchor" href="#_consumes_14"></a>Consumes</h5>
+<h5 id="_consumes_9"><a class="anchor" href="#_consumes_9"></a>Consumes</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -2134,7 +1633,7 @@ SUCCESS</code></pre>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_produces_14"><a class="anchor" href="#_produces_14"></a>Produces</h5>
+<h5 id="_produces_9"><a class="anchor" href="#_produces_9"></a>Produces</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -2145,14 +1644,14 @@ SUCCESS</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_get_user_by_user_name"><a class="anchor" href="#_get_user_by_user_name"></a>4.3.7. Get user by user name</h4>
+<h4 id="_get_user_by_user_name"><a class="anchor" href="#_get_user_by_user_name"></a>4.3.2. Get user by user name</h4>
 <div class="listingblock">
 <div class="content">
 <pre>GET /users/{username}</pre>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_parameters_14"><a class="anchor" href="#_parameters_14"></a>Parameters</h5>
+<h5 id="_parameters_10"><a class="anchor" href="#_parameters_10"></a>Parameters</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16%;">
@@ -2185,7 +1684,7 @@ SUCCESS</code></pre>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_responses_15"><a class="anchor" href="#_responses_15"></a>Responses</h5>
+<h5 id="_responses_10"><a class="anchor" href="#_responses_10"></a>Responses</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 33%;">
@@ -2229,7 +1728,7 @@ SUCCESS</code></pre>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_consumes_15"><a class="anchor" href="#_consumes_15"></a>Consumes</h5>
+<h5 id="_consumes_10"><a class="anchor" href="#_consumes_10"></a>Consumes</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -2239,7 +1738,7 @@ SUCCESS</code></pre>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_produces_15"><a class="anchor" href="#_produces_15"></a>Produces</h5>
+<h5 id="_produces_10"><a class="anchor" href="#_produces_10"></a>Produces</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -2250,20 +1749,20 @@ SUCCESS</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_delete_user"><a class="anchor" href="#_delete_user"></a>4.3.8. Delete user</h4>
+<h4 id="_delete_user"><a class="anchor" href="#_delete_user"></a>4.3.3. Delete user</h4>
 <div class="listingblock">
 <div class="content">
 <pre>DELETE /users/{username}</pre>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_description_8"><a class="anchor" href="#_description_8"></a>Description</h5>
+<h5 id="_description_7"><a class="anchor" href="#_description_7"></a>Description</h5>
 <div class="paragraph">
 <p>This can only be done by the logged in user.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_parameters_15"><a class="anchor" href="#_parameters_15"></a>Parameters</h5>
+<h5 id="_parameters_11"><a class="anchor" href="#_parameters_11"></a>Parameters</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16%;">
@@ -2296,7 +1795,7 @@ SUCCESS</code></pre>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_responses_16"><a class="anchor" href="#_responses_16"></a>Responses</h5>
+<h5 id="_responses_11"><a class="anchor" href="#_responses_11"></a>Responses</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 33%;">
@@ -2339,6 +1838,507 @@ SUCCESS</code></pre>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">404</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">User not found</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No Content</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_consumes_11"><a class="anchor" href="#_consumes_11"></a>Consumes</h5>
+<div class="ulist">
+<ul>
+<li>
+<p>application/json</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_produces_11"><a class="anchor" href="#_produces_11"></a>Produces</h5>
+<div class="ulist">
+<ul>
+<li>
+<p>application/json</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_creates_list_of_users_with_given_input_array"><a class="anchor" href="#_creates_list_of_users_with_given_input_array"></a>4.3.4. Creates list of users with given input array</h4>
+<div class="listingblock">
+<div class="content">
+<pre>POST /users/createWithArray</pre>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_parameters_12"><a class="anchor" href="#_parameters_12"></a>Parameters</h5>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16%;">
+<col style="width: 16%;">
+<col style="width: 16%;">
+<col style="width: 16%;">
+<col style="width: 16%;">
+<col style="width: 16%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Required</th>
+<th class="tableblock halign-left valign-top">Schema</th>
+<th class="tableblock halign-left valign-top">Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">BodyParameter</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">users</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">List of user object</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#_user">User</a> array</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_responses_12"><a class="anchor" href="#_responses_12"></a>Responses</h5>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 33%;">
+<col style="width: 33%;">
+<col style="width: 33%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">HTTP Code</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Schema</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">200</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">OK</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#_user">User</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">201</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Created</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No Content</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">401</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Unauthorized</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No Content</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">403</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Forbidden</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No Content</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">404</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Not Found</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No Content</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_consumes_12"><a class="anchor" href="#_consumes_12"></a>Consumes</h5>
+<div class="ulist">
+<ul>
+<li>
+<p>application/json</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_produces_12"><a class="anchor" href="#_produces_12"></a>Produces</h5>
+<div class="ulist">
+<ul>
+<li>
+<p>application/json</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_creates_list_of_users_with_given_input_array_2"><a class="anchor" href="#_creates_list_of_users_with_given_input_array_2"></a>4.3.5. Creates list of users with given input array</h4>
+<div class="listingblock">
+<div class="content">
+<pre>POST /users/createWithList</pre>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_parameters_13"><a class="anchor" href="#_parameters_13"></a>Parameters</h5>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16%;">
+<col style="width: 16%;">
+<col style="width: 16%;">
+<col style="width: 16%;">
+<col style="width: 16%;">
+<col style="width: 16%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Required</th>
+<th class="tableblock halign-left valign-top">Schema</th>
+<th class="tableblock halign-left valign-top">Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">BodyParameter</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">users</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">List of user object</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#_user">User</a> array</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_responses_13"><a class="anchor" href="#_responses_13"></a>Responses</h5>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 33%;">
+<col style="width: 33%;">
+<col style="width: 33%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">HTTP Code</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Schema</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">200</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">OK</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">201</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Created</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No Content</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">401</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Unauthorized</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No Content</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">403</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Forbidden</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No Content</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">404</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Not Found</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No Content</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_consumes_13"><a class="anchor" href="#_consumes_13"></a>Consumes</h5>
+<div class="ulist">
+<ul>
+<li>
+<p>application/json</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_produces_13"><a class="anchor" href="#_produces_13"></a>Produces</h5>
+<div class="ulist">
+<ul>
+<li>
+<p>application/json</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_logs_out_current_logged_in_user_session"><a class="anchor" href="#_logs_out_current_logged_in_user_session"></a>4.3.6. Logs out current logged in user session</h4>
+<div class="listingblock">
+<div class="content">
+<pre>GET /users/logout</pre>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_responses_14"><a class="anchor" href="#_responses_14"></a>Responses</h5>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 33%;">
+<col style="width: 33%;">
+<col style="width: 33%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">HTTP Code</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Schema</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">200</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">OK</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">401</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Unauthorized</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No Content</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">403</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Forbidden</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No Content</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">404</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Not Found</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No Content</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_consumes_14"><a class="anchor" href="#_consumes_14"></a>Consumes</h5>
+<div class="ulist">
+<ul>
+<li>
+<p>application/json</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_produces_14"><a class="anchor" href="#_produces_14"></a>Produces</h5>
+<div class="ulist">
+<ul>
+<li>
+<p>application/json</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_create_user"><a class="anchor" href="#_create_user"></a>4.3.7. Create user</h4>
+<div class="listingblock">
+<div class="content">
+<pre>POST /users</pre>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_description_8"><a class="anchor" href="#_description_8"></a>Description</h5>
+<div class="paragraph">
+<p>This can only be done by the logged in user.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_parameters_14"><a class="anchor" href="#_parameters_14"></a>Parameters</h5>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16%;">
+<col style="width: 16%;">
+<col style="width: 16%;">
+<col style="width: 16%;">
+<col style="width: 16%;">
+<col style="width: 16%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Required</th>
+<th class="tableblock halign-left valign-top">Schema</th>
+<th class="tableblock halign-left valign-top">Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">BodyParameter</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Created user object</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#_user">User</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_responses_15"><a class="anchor" href="#_responses_15"></a>Responses</h5>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 33%;">
+<col style="width: 33%;">
+<col style="width: 33%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">HTTP Code</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Schema</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">200</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">OK</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#_user">User</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">201</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Created</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No Content</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">401</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Unauthorized</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No Content</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">403</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Forbidden</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No Content</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">404</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Not Found</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No Content</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_consumes_15"><a class="anchor" href="#_consumes_15"></a>Consumes</h5>
+<div class="ulist">
+<ul>
+<li>
+<p>application/json</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_produces_15"><a class="anchor" href="#_produces_15"></a>Produces</h5>
+<div class="ulist">
+<ul>
+<li>
+<p>application/json</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_logs_user_into_the_system"><a class="anchor" href="#_logs_user_into_the_system"></a>4.3.8. Logs user into the system</h4>
+<div class="listingblock">
+<div class="content">
+<pre>GET /users/login</pre>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_parameters_15"><a class="anchor" href="#_parameters_15"></a>Parameters</h5>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16%;">
+<col style="width: 16%;">
+<col style="width: 16%;">
+<col style="width: 16%;">
+<col style="width: 16%;">
+<col style="width: 16%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Required</th>
+<th class="tableblock halign-left valign-top">Schema</th>
+<th class="tableblock halign-left valign-top">Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">QueryParameter</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">username</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The user name for login</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">QueryParameter</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">password</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The password for login in clear text</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_responses_16"><a class="anchor" href="#_responses_16"></a>Responses</h5>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 33%;">
+<col style="width: 33%;">
+<col style="width: 33%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">HTTP Code</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Schema</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">200</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">OK</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">400</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Invalid username/password supplied</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No Content</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">401</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Unauthorized</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No Content</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">403</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Forbidden</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No Content</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">404</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Not Found</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">No Content</p></td>
 </tr>
 </tbody>
