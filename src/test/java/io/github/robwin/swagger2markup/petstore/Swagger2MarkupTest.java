@@ -62,7 +62,7 @@ public class Swagger2MarkupTest {
     private MockMvc mockMvc;
 
     @Rule
-    public final RestDocumentation restDocumentation = new RestDocumentation("build/asciidoc");
+    public final RestDocumentation restDocumentation = new RestDocumentation("build/asciidoc/snippets");
 
     @Before
     public void setUp() {
@@ -75,7 +75,7 @@ public class Swagger2MarkupTest {
     public void addANewPetToTheStore() throws Exception {
         this.mockMvc.perform(post("/pets/").content(createPet())
                 .contentType(MediaType.APPLICATION_JSON))
-                .andDo(document("add_a_new_pet_to_the_store", preprocessResponse(prettyPrint())))
+                .andDo(document("addPetUsingPost", preprocessResponse(prettyPrint())))
                 .andExpect(status().isOk());
     }
 

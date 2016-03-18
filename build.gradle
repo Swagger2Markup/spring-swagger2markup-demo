@@ -1,17 +1,18 @@
-import io.github.robwin.swagger2markup.GroupBy
+import io.github.swagger2markup.GroupBy
 
 buildscript {
     repositories {
         jcenter()
         mavenCentral()
         maven { url 'http://oss.jfrog.org/artifactory/oss-snapshot-local/' }
-        mavenLocal()
+        //mavenLocal()
     }
     dependencies {
         classpath 'org.asciidoctor:asciidoctor-gradle-plugin:1.5.3'
         classpath 'org.asciidoctor:asciidoctorj-pdf:1.5.0-alpha.10.1'
         classpath 'org.springframework.boot:spring-boot-gradle-plugin:1.3.3.RELEASE'
-        classpath 'io.github.robwin:swagger2markup-gradle-plugin:1.0.0-SNAPSHOT'
+        classpath 'io.github.swagger2markup:swagger2markup-spring-restdocs-ext:1.0.0-SNAPSHOT'
+        classpath 'io.github.swagger2markup:swagger2markup-gradle-plugin:1.0.0-SNAPSHOT'
         classpath 'io.spring.gradle:dependency-management-plugin:0.5.6.RELEASE'
         classpath "org.ajoberstar:gradle-git:1.3.2"
     }
@@ -21,12 +22,12 @@ apply plugin: 'java'
 apply plugin: 'maven'
 apply plugin: 'spring-boot'
 apply plugin: 'org.asciidoctor.convert'
-apply plugin: 'io.github.robwin.swagger2markup'
+apply plugin: 'io.github.swagger2markup'
 apply plugin: 'io.spring.dependency-management'
 apply plugin: 'org.ajoberstar.github-pages'
 
-version = '0.9.1'
-group = 'io.github.robwin'
+version = '0.9.2'
+group = 'io.github.swaggger2markup'
 
 tasks.withType(JavaCompile) {
     sourceCompatibility = "1.7"
@@ -66,8 +67,9 @@ dependencyManagement {
 }
 
 ext {
-    asciiDocOutputDir = file("${buildDir}/asciidoc")
+    asciiDocOutputDir = file("${buildDir}/asciidoc/generated")
     swaggerOutputDir = file("${buildDir}/swagger")
+    snippetsOutputDir = file("${buildDir}/asciidoc/snippets")
 }
 
 test {
@@ -77,9 +79,11 @@ test {
 convertSwagger2markup {
     dependsOn test
     inputDir swaggerOutputDir
+    outputDir asciiDocOutputDir
     config = [
             'swagger2markup.operationsGroupedBy' : GroupBy.TAGS.toString(),
-            'swagger2markup.generatedExamplesEnabled' : 'true']
+            'swagger2markup.generatedExamplesEnabled' : 'true',
+            'swagger2markup.extensions.springRestDocs.snippetBaseUri' : uri(snippetsOutputDir).toString()]
 }
 
 asciidoctor {
