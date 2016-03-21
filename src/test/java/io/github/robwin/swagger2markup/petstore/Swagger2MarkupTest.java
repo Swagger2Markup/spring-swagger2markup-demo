@@ -75,7 +75,7 @@ public class Swagger2MarkupTest {
     public void addANewPetToTheStore() throws Exception {
         this.mockMvc.perform(post("/pets/").content(createPet())
                 .contentType(MediaType.APPLICATION_JSON))
-                .andDo(document("addPetUsingPost", preprocessResponse(prettyPrint())))
+                .andDo(document("addPetUsingPOST", preprocessResponse(prettyPrint())))
                 .andExpect(status().isOk());
     }
 
