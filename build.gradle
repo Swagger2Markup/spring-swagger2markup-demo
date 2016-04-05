@@ -76,8 +76,8 @@ test {
 
 convertSwagger2markup {
     dependsOn test
-    swaggerInput swaggerOutputDir
-    markupOutputDir asciiDocOutputDir
+    swaggerInput "${swaggerOutputDir}/swagger.json"
+    outputDir asciiDocOutputDir
     config = [
             'swagger2markup.pathsGroupedBy' : 'TAGS',
             'swagger2markup.extensions.springRestDocs.snippetBaseUri': uri(snippetsOutputDir).toString()]
