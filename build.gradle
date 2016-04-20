@@ -48,6 +48,7 @@ dependencies {
     compile 'org.springframework.boot:spring-boot-starter-actuator'
     compile 'io.swagger:swagger-annotations:1.5.6'
     compile 'com.google.guava:guava:18.0'
+    compile 'net.logstash.logback:logstash-logback-encoder:4.5.1'
     testCompile 'io.springfox:springfox-swagger2:2.4.0'
     testCompile 'io.springfox:springfox-bean-validators:2.4.0'
     testCompile 'org.springframework.boot:spring-boot-starter-test'

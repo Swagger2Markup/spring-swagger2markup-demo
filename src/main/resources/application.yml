@@ -1,6 +1,6 @@
 spring:
     profiles.active: dev
-    main.show_banner: false
+    application.name: swagger2markup-demo
     jackson.serialization.indent_output: true
 
 server:
@@ -11,6 +11,6 @@ management:
     add-application-context-header: false
 
 info:
-    name: swagger2markup-demo
+    name: ${spring.application.name}
     description:  Swagger2Markup demo
     version: 1.0.0
