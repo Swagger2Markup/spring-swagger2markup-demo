@@ -12,5 +12,6 @@ management:
 
 info:
     name: ${spring.application.name}
-    description:  Swagger2Markup demo
+    description: Swagger2Markup demo
+    environment: ${spring.profiles.active}
     version: 1.0.0

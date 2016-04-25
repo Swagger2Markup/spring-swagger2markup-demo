@@ -5,7 +5,9 @@
 
     <property name="CONSOLE_LOG_PATTERN" value="%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(%5p) %clr(${PID:- }){magenta} %clr(---){faint} %clr([%15.15t{14}]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n%wex"/>
 
-    <springProperty scope="context" name="application_name" source="spring.application.name"/>
+    <springProperty scope="context" name="application_name" source="info.name"/>
+    <springProperty scope="context" name="application_version" source="info.version"/>
+    <springProperty scope="context" name="environment" source="info.environment"/>
 
     <jmxConfigurator/>
 

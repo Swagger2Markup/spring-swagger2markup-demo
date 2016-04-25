@@ -49,13 +49,15 @@ dependencies {
     compile 'io.swagger:swagger-annotations:1.5.6'
     compile 'com.google.guava:guava:18.0'
     compile 'net.logstash.logback:logstash-logback-encoder:4.5.1'
+    compile("com.fasterxml.jackson.dataformat:jackson-dataformat-smile:2.6.5")
+    compile("com.fasterxml.jackson.module:jackson-module-afterburner:2.6.5")
     testCompile 'io.springfox:springfox-swagger2:2.4.0'
     testCompile 'io.springfox:springfox-bean-validators:2.4.0'
     testCompile 'org.springframework.boot:spring-boot-starter-test'
     testCompile 'io.springfox:springfox-staticdocs:2.4.0'
     testCompile 'junit:junit'
     testCompile 'org.springframework.restdocs:spring-restdocs-mockmvc'
-    testCompile 'com.fasterxml.jackson.module:jackson-module-jsonSchema:2.4.0'
+    testCompile 'com.fasterxml.jackson.module:jackson-module-jsonSchema:2.6.5'
     testCompile 'io.github.robwin:assertj-swagger:0.2.0'
 }
 
