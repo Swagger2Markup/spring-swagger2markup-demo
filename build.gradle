@@ -24,7 +24,7 @@ apply plugin: 'io.github.swagger2markup'
 apply plugin: 'io.spring.dependency-management'
 apply plugin: 'org.ajoberstar.github-pages'
 
-version = '1.0.0-SNAPSHOT'
+version = '1.0.0'
 group = 'io.github.swaggger2markup'
 
 tasks.withType(JavaCompile) {
