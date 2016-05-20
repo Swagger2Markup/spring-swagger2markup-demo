@@ -75,6 +75,7 @@ ext {
 
 test {
     systemProperty 'io.springfox.staticdocs.outputDir', swaggerOutputDir
+    systemProperty 'io.springfox.staticdocs.snippetsOutputDir', snippetsOutputDir
 }
 
 convertSwagger2markup {
