@@ -62,7 +62,7 @@ public class Swagger2MarkupTest {
     private MockMvc mockMvc;
 
     @Rule
-    public final RestDocumentation restDocumentation = new RestDocumentation("build/asciidoc/snippets");
+    public final RestDocumentation restDocumentation = new RestDocumentation(System.getProperty("io.springfox.staticdocs.snippetsOutputDir"));
 
     @Before
     public void setUp() {
