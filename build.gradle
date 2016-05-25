@@ -84,7 +84,7 @@ convertSwagger2markup {
     outputDir asciiDocOutputDir
     config = [
             'swagger2markup.pathsGroupedBy' : 'TAGS',
-            'swagger2markup.extensions.springRestDocs.snippetBaseUri': uri(snippetsOutputDir).toString()]
+            'swagger2markup.extensions.springRestDocs.snippetBaseUri': snippetsOutputDir.getAbsolutePath()]
 }
 
 asciidoctor {
