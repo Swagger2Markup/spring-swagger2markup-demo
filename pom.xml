@@ -252,7 +252,7 @@
                             <outputDirectory>${asciidoctor.html.output.directory}</outputDirectory>
                         </configuration>
                     </execution>
-                    
+
                     <execution>
                         <id>output-pdf</id>
                         <phase>test</phase>
@@ -264,9 +264,68 @@
                             <outputDirectory>${asciidoctor.pdf.output.directory}</outputDirectory>
                         </configuration>
                     </execution>
-                    
+
                 </executions>
             </plugin>
+
+            <!-- specify the main class for the manifest -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>2.4</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                            <classpathPrefix>lib/</classpathPrefix>
+                            <mainClass>io.github.robwin.swagger2markup.petstore.Application</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+
+            <!-- copy dependencies to the lib directory -->
+            <plugin>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.build.directory}/lib</outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- copy the generated documents -->
+            <plugin>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>2.7</version>
+                <executions>
+                    <execution>
+                        <id>copy-resources</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.build.outputDirectory}/static/docs</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>${asciidoctor.html.output.directory}</directory>
+                                </resource>
+                                <resource>
+                                    <directory>${asciidoctor.pdf.output.directory}</directory>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
         </plugins>
     </build>
 </project>

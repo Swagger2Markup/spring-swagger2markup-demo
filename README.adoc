@@ -1,6 +1,6 @@
 = Swagger2Markup Demo
 :author: Robert Winkler
-:version: 0.9.1
+:version: 1.0.0
 :hardbreaks:
 
 image:https://travis-ci.org/Swagger2Markup/spring-swagger2markup-demo.svg?branch=master["Build Status", link="https://travis-ci.org/Swagger2Markup/spring-swagger2markup-demo"] image:http://img.shields.io/badge/license-ASF2-blue.svg["Apache License 2", link="http://www.apache.org/licenses/LICENSE-2.0.txt"] image:https://img.shields.io/badge/Twitter-rbrtwnklr-blue.svg["Twitter", link="https://twitter.com/rbrtwnklr"] image:https://badges.gitter.im/Join%20Chat.svg[link="https://gitter.im/RobWin/swagger2markup?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge"]
@@ -13,6 +13,9 @@ The demo shows how to generate static docs (HTML5 and PDF) with the https://gith
 See https://github.com/RobWin/swagger2markup[Swagger2Markup] and https://github.com/RobWin/swagger2markup-gradle-plugin[swagger2markup-gradle-plugin] for more details and usage guide.
 
 == Usage guide
+
+=== Gradle
+
 If you want to start the Spring Boot application, please run:
 
 [source,groovy]
@@ -32,7 +35,31 @@ If you only want to generate the HTML and PDF documentation, please run:
 gradlew clean asciidoctor
 ----
 
-The results are generated into `build\asciidoc\html5` and `build\asciidoc\pdf`.
+The results are generated into `build/asciidoc/html5` and `build/asciidoc/pdf`.
+
+=== Maven
+
+If you want to start the Spring Boot application, please run:
+
+[source,groovy]
+----
+mvn clean package
+----
+
+[subs="attributes"]
+----
+java -jar target/spring-swagger2markup-demo-{version}.jar
+----
+
+If you only want to generate the HTML and PDF documentation, please run:
+
+[source,groovy]
+----
+mvn clean test
+----
+
+The results are generated into `target/asciidoc/html` and `target/asciidoc/pdf`.
+
 
 == Demo
 
@@ -42,4 +69,3 @@ See live demo on GitHub Pages: http://swagger2markup.github.io/spring-swagger2ma
 == Screenshot
 
 image:images/Demo.PNG[]
-
