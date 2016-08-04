@@ -24,11 +24,13 @@ import io.swagger.annotations.ApiModelProperty;
 import io.github.robwin.swagger2markup.petstore.repository.Identifiable;
 
 import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import java.util.Date;
 
 public class Order implements Identifiable<Long> {
   private long id;
   private long petId;
+  @Min(1)
   @Max(100)
   private int quantity;
   private Date shipDate;
