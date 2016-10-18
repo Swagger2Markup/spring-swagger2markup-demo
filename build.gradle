@@ -10,7 +10,7 @@ buildscript {
         classpath 'org.asciidoctor:asciidoctorj-pdf:1.5.0-alpha.10.1'
         classpath 'org.springframework.boot:spring-boot-gradle-plugin:1.4.0.RELEASE'
         classpath 'io.github.swagger2markup:swagger2markup-spring-restdocs-ext:1.0.0'
-        classpath 'io.github.swagger2markup:swagger2markup-gradle-plugin:1.0.1'
+        classpath 'io.github.swagger2markup:swagger2markup-gradle-plugin:1.1.0'
         classpath "org.ajoberstar:gradle-git:1.5.1"
     }
 }
@@ -23,7 +23,7 @@ apply plugin: 'io.github.swagger2markup'
 apply plugin: 'io.spring.dependency-management'
 apply plugin: 'org.ajoberstar.github-pages'
 
-version = '1.0.1'
+version = '1.1.0'
 group = 'io.github.swaggger2markup'
 
 tasks.withType(JavaCompile) {
@@ -126,5 +126,5 @@ jar {
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '2.10'
+    gradleVersion = '2.12'
 }
