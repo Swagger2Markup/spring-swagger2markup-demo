@@ -7,7 +7,7 @@
     <parent>
         <groupId>io.spring.platform</groupId>
         <artifactId>platform-bom</artifactId>
-        <version>2.0.3.RELEASE</version>
+        <version>Athens-RELEASE</version>
     </parent>
 
     <groupId>io.github.swagger2markup</groupId>
