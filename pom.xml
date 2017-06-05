@@ -196,7 +196,7 @@
                         <swagger2markup.extensions.dynamicSecurity.contentPath>${project.basedir}src/docs/asciidoc/extensions/security/</swagger2markup.extensions.dynamicSecurity.contentPath>
 
                         <swagger2markup.extensions.springRestDocs.snippetBaseUri>${swagger.snippetOutput.dir}</swagger2markup.extensions.springRestDocs.snippetBaseUri>
-                        <swagger2markup.extensions.springRestDocs.defaultSnippets>false</swagger2markup.extensions.springRestDocs.defaultSnippets>
+                        <swagger2markup.extensions.springRestDocs.defaultSnippets>true</swagger2markup.extensions.springRestDocs.defaultSnippets>
                     </config>
                 </configuration>
                 <executions>
